@@ -22,9 +22,9 @@ export default function StudentHomePage() {
     <div className="page-center">
       <div style={{ width: '100%', maxWidth: '480px' }}>
         <div className="text-center mb-4">
-          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>TestFlow</Link>
+          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>VishwaVed Academy</Link>
           <h1 style={{ fontSize: '1.6rem', marginTop: '1.5rem', marginBottom: '0.35rem' }}>Student Portal</h1>
-          <p className="text-secondary text-sm">Take a test or view your published results.</p>
+          <p className="text-secondary text-sm">Take an assessment or view your published results.</p>
         </div>
 
         {/* Tab Toggle */}

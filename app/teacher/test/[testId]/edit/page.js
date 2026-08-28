@@ -5,7 +5,7 @@ import db from '@/lib/db'
 import { logoutTeacher } from '@/actions/auth-redirect'
 import EditTestClient from './EditTestClient'
 
-export const metadata = { title: 'Edit Test — TestFlow' }
+export const metadata = { title: 'Edit Test — VishwaVed Academy' }
 
 export default async function EditTestPage({ params }) {
   const session = await getTeacherSession()
@@ -20,7 +20,7 @@ export default async function EditTestPage({ params }) {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/teacher/dashboard" className="navbar-brand">TestFlow</Link>
+          <Link href="/teacher/dashboard" className="navbar-brand">VishwaVed Academy</Link>
           <div className="navbar-actions">
             <Link href={`/teacher/test/${test.id}`} className="btn btn-secondary btn-sm">← Test Overview</Link>
             <form action={logoutTeacher}>

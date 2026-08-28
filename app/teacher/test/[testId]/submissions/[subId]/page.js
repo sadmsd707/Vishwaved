@@ -5,7 +5,7 @@ import db from '@/lib/db'
 import { logoutTeacher } from '@/actions/auth-redirect'
 import { toggleSubmissionPublish } from '@/actions/publish'
 
-export const metadata = { title: 'Student Submission — TestFlow' }
+export const metadata = { title: 'Student Submission — VishwaVed Academy' }
 
 const OPTION_KEYS = ['A', 'B', 'C', 'D']
 
@@ -34,7 +34,7 @@ export default async function SubmissionDetailPage({ params }) {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/teacher/dashboard" className="navbar-brand">TestFlow</Link>
+          <Link href="/teacher/dashboard" className="navbar-brand">VishwaVed Academy</Link>
           <div className="navbar-actions">
             <Link href={`/teacher/test/${submission.testId}/submissions`} className="btn btn-secondary btn-sm">← Submissions</Link>
             <form action={logoutTeacher}>

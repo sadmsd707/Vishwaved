@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import db from '@/lib/db'
 
-export const metadata = { title: 'Your Result — TestFlow' }
+export const metadata = { title: 'Your Result — VishwaVed Academy' }
 
 const OPTION_KEYS = ['A', 'B', 'C', 'D']
 
@@ -91,7 +91,7 @@ export default async function ResultPage({ params, searchParams }) {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/" className="navbar-brand">TestFlow</Link>
+          <Link href="/" className="navbar-brand">VishwaVed Academy</Link>
           <Link href="/student" className="btn btn-secondary btn-sm">Back to Portal</Link>
         </div>
       </nav>

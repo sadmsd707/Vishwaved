@@ -21,9 +21,9 @@ export default function LoginPage() {
     <div className="page-center">
       <div style={{ width: '100%', maxWidth: '420px' }}>
         <div className="text-center mb-4">
-          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>TestFlow</Link>
-          <h1 style={{ fontSize: '1.6rem', marginTop: '1.5rem', marginBottom: '0.35rem' }}>Teacher Login</h1>
-          <p className="text-secondary text-sm">Access your dashboard and manage your tests.</p>
+          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>VishwaVed Academy</Link>
+          <h1 style={{ fontSize: '1.6rem', marginTop: '1.5rem', marginBottom: '0.35rem' }}>Faculty Login</h1>
+          <p className="text-secondary text-sm">Access your dashboard and manage your assessments.</p>
         </div>
 
         <div className="card animate-in">
@@ -31,7 +31,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="form-label" htmlFor="email">Email Address</label>
-              <input id="email" name="email" type="email" className="form-input" placeholder="teacher@school.edu" required />
+              <input id="email" name="email" type="email" className="form-input" placeholder="faculty@vishwaved.academy" required />
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="password">Password</label>
@@ -42,7 +42,7 @@ export default function LoginPage() {
             </button>
           </form>
           <p className="text-center text-sm text-muted mt-3">
-            Don&apos;t have an account? <Link href="/teacher/signup">Sign up →</Link>
+            Don&apos;t have an account? <Link href="/teacher/signup">Register as Faculty →</Link>
           </p>
         </div>
       </div>

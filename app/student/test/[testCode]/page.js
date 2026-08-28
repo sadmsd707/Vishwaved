@@ -5,7 +5,7 @@ import TestForm from './TestForm'
 export async function generateMetadata({ params }) {
   const p = await params
   const test = await db.test.findUnique({ where: { testCode: p.testCode } })
-  return { title: test ? `${test.title} — TestFlow` : 'Test — TestFlow' }
+  return { title: test ? `${test.title} — VishwaVed Academy` : 'Test — VishwaVed Academy' }
 }
 
 export default async function TakeTestPage({ params, searchParams }) {

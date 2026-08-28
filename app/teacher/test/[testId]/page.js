@@ -8,7 +8,7 @@ import { toggleTestActive, deleteTest } from '@/actions/test'
 export async function generateMetadata({ params }) {
   const p = await params
   const test = await db.test.findUnique({ where: { id: p.testId } })
-  return { title: test ? `${test.title} — TestFlow` : 'Test — TestFlow' }
+  return { title: test ? `${test.title} — VishwaVed Academy` : 'Test — VishwaVed Academy' }
 }
 
 export default async function TestOverviewPage({ params }) {
@@ -31,7 +31,7 @@ export default async function TestOverviewPage({ params }) {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/teacher/dashboard" className="navbar-brand">TestFlow</Link>
+          <Link href="/teacher/dashboard" className="navbar-brand">VishwaVed Academy</Link>
           <div className="navbar-actions">
             <span className="text-sm text-muted">{session.teacher.name}</span>
             <form action={logoutTeacher}>

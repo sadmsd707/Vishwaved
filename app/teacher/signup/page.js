@@ -23,9 +23,9 @@ export default function SignupPage() {
     <div className="page-center">
       <div style={{ width: '100%', maxWidth: '440px' }}>
         <div className="text-center mb-4">
-          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>TestFlow</Link>
-          <h1 style={{ fontSize: '1.6rem', marginTop: '1.5rem', marginBottom: '0.35rem' }}>Create Teacher Account</h1>
-          <p className="text-secondary text-sm">Set up your account to start creating tests.</p>
+          <Link href="/" className="navbar-brand" style={{ fontSize: '1.4rem' }}>VishwaVed Academy</Link>
+          <h1 style={{ fontSize: '1.6rem', marginTop: '1.5rem', marginBottom: '0.35rem' }}>Faculty Registration</h1>
+          <p className="text-secondary text-sm">Set up your faculty account to create and manage assessments.</p>
         </div>
 
         {success ? (
@@ -46,7 +46,7 @@ export default function SignupPage() {
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="email">Email Address</label>
-                <input id="email" name="email" type="email" className="form-input" placeholder="teacher@school.edu" required />
+                <input id="email" name="email" type="email" className="form-input" placeholder="faculty@vishwaved.academy" required />
                 {errors.email && <div className="form-error">{errors.email}</div>}
               </div>
               <div className="form-group">
@@ -59,7 +59,7 @@ export default function SignupPage() {
               </button>
             </form>
             <p className="text-center text-sm text-muted mt-3">
-              Already have an account? <Link href="/teacher/login">Log in →</Link>
+              Already have an account? <Link href="/teacher/login">Faculty Login →</Link>
             </p>
           </div>
         )}

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const metadata = { title: 'Test Submitted — TestFlow' }
+export const metadata = { title: 'Test Submitted — VishwaVed Academy' }
 
 export default async function SubmittedPage({ searchParams }) {
   const sp = await searchParams

@@ -3,7 +3,7 @@ import { getTeacherSession } from '@/lib/session'
 import db from '@/lib/db'
 import { logoutTeacher, deleteTest, toggleTestActive } from '@/actions/auth-redirect'
 
-export const metadata = { title: 'Dashboard — TestFlow' }
+export const metadata = { title: 'Dashboard — VishwaVed Academy' }
 
 export default async function DashboardPage() {
   const session = await getTeacherSession()
@@ -26,7 +26,7 @@ export default async function DashboardPage() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/" className="navbar-brand">TestFlow</Link>
+          <Link href="/" className="navbar-brand">VishwaVed Academy</Link>
           <div className="navbar-actions">
             <span className="text-sm text-muted">👋 {teacher.name}</span>
             <form action={logoutTeacher}>

@@ -111,7 +111,7 @@ export default function TestForm({ test, studentName, studentRoll }) {
       <nav className="navbar">
         <div className="navbar-inner">
           <div>
-            <div className="navbar-brand">TestFlow</div>
+            <div className="navbar-brand">VishwaVed Academy</div>
             <div className="text-xs text-muted" style={{ marginTop: '0.1rem' }}>{test.title}</div>
           </div>
           <div className="flex-gap">

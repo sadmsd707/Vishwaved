@@ -4,7 +4,7 @@ import { getTeacherSession } from '@/lib/session'
 import db from '@/lib/db'
 import { logoutTeacher } from '@/actions/auth-redirect'
 
-export const metadata = { title: 'Submissions — TestFlow' }
+export const metadata = { title: 'Submissions — VishwaVed Academy' }
 
 function ScoreBadge({ score, max }) {
   const pct = max > 0 ? Math.round((score / max) * 100) : 0
@@ -38,7 +38,7 @@ export default async function SubmissionsPage({ params }) {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/teacher/dashboard" className="navbar-brand">TestFlow</Link>
+          <Link href="/teacher/dashboard" className="navbar-brand">VishwaVed Academy</Link>
           <div className="navbar-actions">
             <Link href={`/teacher/test/${test.id}`} className="btn btn-secondary btn-sm">← Test Overview</Link>
             <form action={logoutTeacher}>

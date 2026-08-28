@@ -21,7 +21,7 @@ export default function NewTestPage() {
     <div className="page">
       <nav className="navbar">
         <div className="navbar-inner">
-          <Link href="/teacher/dashboard" className="navbar-brand">TestFlow</Link>
+          <Link href="/teacher/dashboard" className="navbar-brand">VishwaVed Academy</Link>
           <Link href="/teacher/dashboard" className="btn btn-secondary btn-sm">← Dashboard</Link>
         </div>
       </nav>
