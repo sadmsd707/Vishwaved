@@ -1,23 +1,40 @@
-# 🚀 Vishwaved — TestFlow Online Testing Platform
+# 🎓 VishwaVed Academy — Educational Website & Online Assessment Platform
 
-A secure, high-concurrency online examination and assessment platform built with **Next.js 16 (App Router)**, **PostgreSQL**, **Server Actions**, and **Jose (JWT Sessions)**.
+A modern, full-stack educational academy web application and secure online testing platform built with **Next.js 16 (App Router)**, **PostgreSQL (Supabase)**, **Server Actions**, and **Jose (JWT Sessions)**.
 
-Designed specifically for educational institutions to conduct concurrent tests for **100+ students simultaneously** with zero client-side data exposure and instantaneous server-side auto-grading.
+Designed for educational institutions to showcase academy offerings (courses, faculty, achievements) while providing a high-concurrency online examination engine for **100+ students simultaneously** with zero client-side data exposure and instantaneous server-side auto-grading.
 
 ---
 
 ## 🌟 Key Highlights & Features
 
-### 🎓 Teacher Features
-- **Teacher Authentication**: Secure registration and login using `bcryptjs` (salt rounds: 12) with encrypted, `httpOnly`, `sameSite: lax` session cookies via `jose`.
-- **Test Management**:
+### 🏫 Academy Website & Landing Experience
+- **Modern & Vibrant Light Design System**: Clean white & slate canvas with royal teal and sunset orange accents, soft multi-layer shadows, and typography powered by Google's *Outfit* and *Plus Jakarta Sans*.
+- **Interactive Navigation & Slide-Over Drawer**:
+  - Sticky frosted navigation bar with academy branding.
+  - Three-lines hamburger menu (☰) in the upper corner opening a sleek slide-out drawer with quick links and direct portal cards.
+- **Rich Multi-Section Content**:
+  - **Hero Section**: Animated gradient orbs, inspiring tagline, and direct "Explore Courses" call-to-action.
+  - **Stats Ribbon**: Key achievements (500+ Students, 50+ Courses, 30+ Faculty, 15+ Years).
+  - **About Us**: Academy mission, values, and core differentiators.
+  - **Courses Grid**: Curated curriculum across Science, Mathematics, Engineering (JEE/CET), Commerce, Competitive Exams (NEET), and Computer Science.
+  - **Why VishwaVed**: Highlights covering expert faculty, modern labs, smart online testing, and proven results.
+  - **Faculty Showcase**: Teacher profiles with qualifications and subject expertise.
+  - **Student Testimonials**: Verified student success stories and star ratings.
+  - **Contact & Enrollment**: Academy address in Baramati, contact phone, email, and direct registration links.
+
+---
+
+### 👨‍🏫 Faculty / Teacher Portal
+- **Faculty Authentication**: Secure registration and login backed by Supabase PostgreSQL with `bcryptjs` password hashing (salt rounds: 12) and encrypted `httpOnly`, `sameSite: lax` session cookies via `jose`.
+- **Test Management & Configuration**:
   - Create and configure tests with custom title, instructions, time limit (with automatic countdown), availability window, and attempt limits.
   - Automatically generates human-friendly unique test access codes (e.g., `TEST-7K3M9P`).
-  - Toggle test active/inactive status at any time.
-- **Question Types**:
-  - **Multiple Choice Questions (MCQ)**: Configurable 4 options (A, B, C, D) with single correct answer selection.
-  - **Numerical Questions**: Exact answer matching with optional configurable floating-point tolerance ($\pm$ margin).
-  - Configurable marks and optional explanations per question.
+  - Toggle test active/inactive status in real time.
+- **Rich Question Builder**:
+  - **Multiple Choice Questions (MCQ)**: 4 configurable options (A, B, C, D) with single correct answer selection.
+  - **Numerical Questions**: Exact answer matching with configurable floating-point tolerance ($\pm$ margin).
+  - Configurable marks and optional solution explanations per question.
 - **Real-Time Submissions & Grading**:
   - View all student submissions, roll numbers, timestamps, and auto-calculated scores.
   - Inspect individual student breakdowns (per-question answers vs correct keys, marks awarded).
@@ -26,11 +43,13 @@ Designed specifically for educational institutions to conduct concurrent tests f
   - Granular per-student selective publishing.
   - Toggle whether students can view correct answers and explanations after publication.
 
-### 📝 Student Features
-- **Zero Account Friction**: Students join instantly with just the **Test ID**, their **Full Name**, and **Roll Number/Student ID**.
+---
+
+### 📝 Student Portal
+- **Zero Friction Entry**: Students join tests instantly with just the **Test ID**, their **Full Name**, and **Roll Number / Student ID**. No prior registration required.
 - **Interactive Test Interface**:
   - Real-time countdown timer with visual progress indicator and color-coded urgency states.
-  - Two display modes supported: **All questions at once** or **One-by-one question navigation**.
+  - Responsive layout optimized for smartphones, tablets, and desktop computers.
   - Automatic submission when the timer expires.
 - **Published Results Portal**:
   - Clean student score card with animated circular percentage score meter.
@@ -43,7 +62,7 @@ Designed specifically for educational institutions to conduct concurrent tests f
 1. **Zero Client APIs**: No `/api/*` endpoints are exposed. All state mutations and data submissions happen exclusively via encrypted Next.js **Server Actions**.
 2. **Answer Key Protection**: Correct answers and solution explanations are **never selected** in SQL queries when serving tests to students. Answer keys physically never leave the server.
 3. **Server-Side Auto-Grading**: Submissions are evaluated strictly inside server actions before storing results in the database.
-4. **Session Security**: Teachers' sessions are stored inside signed and encrypted `httpOnly` cookies using `jose` AES-GCM encryption, making them inaccessible to JavaScript/XSS.
+4. **Session Security**: Faculty sessions are stored inside signed and encrypted `httpOnly` cookies using `jose` AES-GCM encryption, making them inaccessible to JavaScript/XSS.
 5. **High Concurrency (100+ Students)**: Uses connection pooling with row-level transaction safety in PostgreSQL to handle simultaneous burst submissions smoothly.
 6. **Cross-Platform Compatibility**: Uses pure JavaScript PostgreSQL communication (`postgres.js`), ensuring complete compatibility across Windows (x64 & ARM64), Linux, and macOS without native binary dependencies.
 
@@ -53,11 +72,11 @@ Designed specifically for educational institutions to conduct concurrent tests f
 
 | Layer | Technology |
 |---|---|
-| **Framework** | Next.js 16 (App Router + Server Components + Turbopack) |
-| **Language** | JavaScript (ESM) |
-| **Styling** | Vanilla CSS Design System (Modern Dark Theme, Glassmorphism, Responsive) |
-| **Database** | PostgreSQL |
-| **DB Client** | Pure JS `postgres.js` client + Prisma schema definition |
+| **Framework** | [Next.js 16](https://nextjs.org/) (App Router + Server Components + Turbopack) |
+| **Language** | JavaScript (ESM) / React 19 |
+| **Styling** | Vanilla CSS Design System (Clean Light Theme, Mobile-First, Responsive) |
+| **Database** | PostgreSQL ([Supabase](https://supabase.com/)) |
+| **Database Client** | Pure JS `postgres.js` client + Prisma schema definition |
 | **Auth & Security** | `jose` (HS256/AES JWT in httpOnly cookie), `bcryptjs` |
 
 ---
@@ -65,22 +84,24 @@ Designed specifically for educational institutions to conduct concurrent tests f
 ## 📁 Project Structure
 
 ```
-├── actions/                  # Next.js Server Actions (No API routes exposed)
-│   ├── auth.js               # Teacher sign-up, login, session validation
+├── actions/                  # Next.js Server Actions (No public API routes)
+│   ├── auth.js               # Faculty sign-up, login, password hashing
 │   ├── auth-redirect.js      # Logout action with navigation redirect
 │   ├── test.js               # Test CRUD, code generation, toggle status
 │   ├── questions.js          # Add, update, and delete questions
 │   ├── submission.js         # Start test validation & auto-graded submission
 │   └── publish.js            # Result publishing & visibility settings
 ├── app/                      # App Router Pages & Components
-│   ├── globals.css           # Global design system & animations
-│   ├── layout.js             # Root layout with typography
-│   ├── page.js               # Landing page with teacher/student entry points
+│   ├── components/           # Reusable UI Components
+│   │   └── Navbar.js         # Client navbar with animated 3-lines drawer
+│   ├── globals.css           # Global design system, light theme & animations
+│   ├── layout.js             # Root layout with Google Fonts & viewport metadata
+│   ├── page.js               # VishwaVed Academy landing page
 │   ├── not-found.js          # Custom 404 page
-│   ├── teacher/              # Teacher portal routes
-│   │   ├── signup/           # Teacher account creation
-│   │   ├── login/            # Teacher login
-│   │   ├── dashboard/        # Test overview and creation center
+│   ├── teacher/              # Faculty portal routes
+│   │   ├── signup/           # Faculty registration
+│   │   ├── login/            # Faculty login
+│   │   ├── dashboard/        # Faculty dashboard & test overview
 │   │   └── test/
 │   │       ├── new/          # Create new test form
 │   │       └── [testId]/
@@ -96,11 +117,11 @@ Designed specifically for educational institutions to conduct concurrent tests f
 │       ├── submitted/        # Submission confirmation
 │       └── result/[testCode]/# Published result scorecard
 ├── lib/
-│   ├── db.js                 # Pure-JS PostgreSQL database connection
+│   ├── db.js                 # Pure-JS PostgreSQL database client
 │   ├── grading.js            # MCQ & Numerical server-side grading algorithms
 │   └── session.js            # jose JWT cookie session manager
 ├── prisma/
-│   └── schema.prisma         # Declarative schema (5 models)
+│   └── schema.prisma         # Declarative database schema
 ├── .env.example              # Environment variable template
 ├── next.config.mjs           # Next.js configuration
 └── README.md
@@ -112,7 +133,7 @@ Designed specifically for educational institutions to conduct concurrent tests f
 
 ### 1. Prerequisites
 - **Node.js**: v18.0.0 or higher
-- **PostgreSQL Database**: A local PostgreSQL instance or a free cloud database (e.g., [Neon.tech](https://neon.tech), [Supabase](https://supabase.com)).
+- **PostgreSQL Database**: A [Supabase](https://supabase.com) project or local PostgreSQL instance.
 
 ### 2. Clone the Repository
 ```bash
@@ -128,17 +149,14 @@ npm install
 ### 4. Configure Environment Variables
 Create a `.env` file in the root directory (refer to `.env.example`):
 ```env
-DATABASE_URL="postgresql://username:password@localhost:5432/testplatform"
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@db.YOUR_PROJECT.supabase.co:5432/postgres"
 SESSION_SECRET="generate-a-random-32-character-secret-key-here"
 ```
 
-### 5. Initialize the Database Schema
-You can push the schema using Prisma:
-```bash
-npx prisma db push
-```
+> **Note**: Do not include square brackets `[ ]` around your database password.
 
-*Or execute the following SQL table definitions in your PostgreSQL database directly:*
+### 5. Initialize Database Tables
+Execute the SQL schema in your Supabase SQL Editor:
 
 ```sql
 CREATE TABLE IF NOT EXISTS teacher (
@@ -205,7 +223,18 @@ CREATE TABLE IF NOT EXISTS answer (
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+
+---
+
+## ☁️ Deploying to Vercel
+
+1. Push your repository to GitHub.
+2. Import the project into **[Vercel](https://vercel.com/)**.
+3. In **Project Settings** → **Environment Variables**, add:
+   - `DATABASE_URL`: Your Supabase connection string.
+   - `SESSION_SECRET`: A secure 32+ character random string.
+4. Click **Deploy**.
 
 ---
 
@@ -213,25 +242,25 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```mermaid
 flowchart TD
-    A[Teacher Registers/Logs in] --> B[Teacher Creates Test]
+    A[Faculty Registers or Logs in] --> B[Faculty Creates Test in Dashboard]
     B --> C[Add MCQs & Numerical Questions]
-    C --> D[Share Test Code: e.g. TEST-7F3A9C]
-    D --> E[100+ Students Access via /student]
-    E --> F[Students Submit Test Responses]
-    F --> G[Server Evaluates & Grades Answers]
-    G --> H[Teacher Views Submissions Dashboard]
-    H --> I[Teacher Publishes Results]
-    I --> J[Students View Scorecard & Breakdown]
+    C --> D[Share Generated Test Code: e.g. TEST-7F3A9C]
+    D --> E[Students Access via Student Portal /student]
+    E --> F[Students Complete Test with Live Timer]
+    F --> G[Server Auto-Grades Submissions Instantly]
+    G --> H[Faculty Reviews Submissions Dashboard]
+    H --> I[Faculty Publishes Results]
+    I --> J[Students View Published Scorecard & Breakdown]
 ```
 
-1. **Teacher Registration**: Visit `/teacher/signup`, create an account, and access the Teacher Dashboard.
-2. **Create a Test**: Click `+ Create Test`, set the title, time limit, and test settings.
-3. **Add Questions**: Add MCQs with 4 options and numerical questions with tolerance values.
-4. **Distribute Test ID**: Share the 6-character access code with students.
-5. **Student Access**: Students open `/student`, enter the Test ID along with their name and roll number.
-6. **Student Submission**: Student completes the test with active timer; responses are submitted and automatically graded on the server.
-7. **Publishing**: Teacher reviews submissions under `/teacher/test/[id]/submissions` and publishes scores via `/teacher/test/[id]/publish`.
-8. **View Scores**: Students check their scores at `/student` (View Result tab).
+1. **Faculty Registration**: Visit `/teacher/signup`, create an account, and access the Faculty Dashboard.
+2. **Create a Test**: Click `+ Create Test`, specify the test title, duration, and rules.
+3. **Add Questions**: Add Multiple Choice Questions (with 4 options) and Numerical Questions (with tolerance).
+4. **Distribute Test ID**: Share the 6-character code with students.
+5. **Student Access**: Students go to `/student`, enter the Test ID with their name and roll number.
+6. **Take Test & Submit**: Students complete the assessment; upon submission or timer expiration, responses are auto-graded on the server.
+7. **Publishing**: Faculty reviews submissions and publishes scores via `/teacher/test/[id]/publish`.
+8. **View Scores**: Students check their results at `/student` under the "View Result" tab.
 
 ---
 
