@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Navbar from './components/Navbar'
 
 export const metadata = {
   title: 'VishwaVed Academy — Excellence in Education & Online Testing',
@@ -8,30 +9,8 @@ export const metadata = {
 export default function LandingPage() {
   return (
     <>
-      {/* ─── NAVIGATION ─── */}
-      <nav className="academy-nav">
-        <div className="academy-nav-inner">
-          <Link href="/" className="brand-logo">
-            <div className="brand-icon">🎓</div>
-            <div>
-              <div className="brand-name">VishwaVed</div>
-              <div className="brand-sub">Academy</div>
-            </div>
-          </Link>
-
-          <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#courses">Courses</a>
-            <a href="#faculty">Faculty</a>
-            <a href="#contact">Contact</a>
-          </div>
-
-          <div className="nav-actions">
-            <Link href="/student" className="btn btn-secondary btn-sm">Student Portal</Link>
-            <Link href="/teacher/login" className="btn btn-primary btn-sm">Faculty Login</Link>
-          </div>
-        </div>
-      </nav>
+      {/* ─── NAVIGATION (with 3-lines menu on top corner) ─── */}
+      <Navbar />
 
       {/* ─── HERO ─── */}
       <section className="academy-hero">
@@ -54,9 +33,7 @@ export default function LandingPage() {
           </p>
 
           <div className="hero-cta-row">
-            <a href="#courses" className="btn btn-primary btn-lg">Explore Courses</a>
-            <Link href="/student" className="btn btn-accent btn-lg">Student Portal →</Link>
-            <Link href="/teacher/login" className="btn btn-outline btn-lg">Faculty Login</Link>
+            <a href="#courses" className="btn btn-primary btn-lg">Explore Courses ↓</a>
           </div>
         </div>
       </section>

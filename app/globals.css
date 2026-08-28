@@ -352,21 +352,244 @@ a:hover { color: var(--accent-2); }
 .nav-links a:hover {
   color: var(--accent-1);
 }
-.nav-actions {
+
+.nav-actions-desktop {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
+  gap: 0.65rem;
+}
+
+/* ─── Hamburger Button (Three Lines) ─── */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  touch-action: manipulation;
+  z-index: 1001;
+}
+.hamburger-btn:hover {
+  background: #f0fdfa;
+  border-color: var(--accent-1);
+}
+.hamburger-line {
+  width: 20px;
+  height: 2.2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.hamburger-btn.active .hamburger-line:nth-child(1) {
+  transform: translateY(7.2px) rotate(45deg);
+  background: var(--accent-1);
+}
+.hamburger-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+.hamburger-btn.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7.2px) rotate(-45deg);
+  background: var(--accent-1);
+}
+
+@media (min-width: 900px) {
+  /* On wide desktop, hamburger can act as quick options or extra menu */
+  .hamburger-btn { display: flex; }
 }
 
 @media (max-width: 860px) {
   .nav-links { display: none; }
+  .nav-actions-desktop { display: none; }
 }
 @media (max-width: 480px) {
   .brand-sub { display: none; }
   .brand-name { font-size: 1.05rem; }
-  .nav-actions .btn-sm { padding: 0.4rem 0.65rem; font-size: 0.78rem; }
+  .hamburger-btn { width: 38px; height: 38px; }
+  .hamburger-line { width: 18px; }
 }
+
+/* ─── Slide-Over Options Drawer ─── */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.drawer-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 86vw);
+  background: #ffffff;
+  z-index: 1100;
+  box-shadow: -10px 0 35px rgba(15, 23, 42, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.drawer-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.drawer-close-btn:hover {
+  background: #fee2e2;
+  color: var(--danger);
+  border-color: rgba(225, 29, 72, 0.3);
+}
+
+.drawer-body {
+  padding: 1.5rem 1.25rem 2.5rem;
+  flex: 1;
+}
+
+.drawer-section-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.drawer-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+}
+.drawer-links a:hover {
+  background: #f0fdfa;
+  color: var(--accent-1);
+  border-color: rgba(13, 148, 136, 0.15);
+  transform: translateX(4px);
+}
+.drawer-icon {
+  font-size: 1.15rem;
+  width: 24px;
+  text-align: center;
+}
+
+.drawer-portals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.drawer-portal-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  background: #f8fafc;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+.drawer-portal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.student-portal-card:hover {
+  background: #f0fdfa;
+  border-color: var(--accent-1);
+}
+.faculty-portal-card:hover {
+  background: #fff7ed;
+  border-color: var(--accent-2);
+}
+.portal-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.portal-card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.portal-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.drawer-signup-link {
+  display: block;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+.drawer-signup-link strong {
+  color: var(--accent-2);
+}
+
 
 /* ─── Dashboard Navbar ─── */
 .navbar {
