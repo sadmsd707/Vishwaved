@@ -128,21 +128,24 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── WHY CHOOSE US ─── */}
+      {/* ─── FACILITIES AT VISHWVED SCIENCE ACADEMY ─── */}
       <section className="section" id="features">
         <div className="container">
           <div className="text-center">
-            <div className="section-tag">Why VishwaVed?</div>
-            <h2 className="section-heading">What Sets Us Apart</h2>
-            <p className="section-sub" style={{ margin: '0 auto 3rem' }}>We combine experienced teaching with cutting-edge technology to deliver exceptional learning outcomes.</p>
+            <div className="section-tag">Facilities &amp; Highlights</div>
+            <h2 className="section-heading">Facilities at VISHWVED SCIENCE ACADEMY</h2>
+            <p className="section-sub" style={{ margin: '0 auto 3rem', maxWidth: '820px' }}>
+              VISHWVED SCIENCE ACADEMY provides modern, student-focused facilities designed to create the perfect learning environment. With advanced classrooms, well-equipped study resources, and a supportive academic atmosphere, we ensure every student gets the best platform to achieve excellence and grow confidently.
+            </p>
           </div>
 
           <div className="features-grid">
             {[
-              { icon: '👨‍🏫', title: 'Expert Faculty', desc: 'Highly qualified teachers with years of experience in board and competitive exam coaching.' },
-              { icon: '🧪', title: 'Modern Labs', desc: 'Well-equipped science and computer labs for practical, hands-on learning experiences.' },
-              { icon: '📱', title: 'Online Testing', desc: 'Seamless MCQ and numerical tests with instant grading, analytics, and performance tracking.' },
-              { icon: '📈', title: 'Proven Results', desc: 'Consistent track record of top ranks in board exams, JEE, NEET, and other competitive exams.' },
+              { icon: '🎯', title: 'Dedicated Batches', desc: 'Dedicated batches for IIT-JEE, NEET & MHT-CET with focused study plans and personalized mentoring.' },
+              { icon: '👨‍🏫', title: 'Experienced Faculty', desc: 'Highly experienced faculty from top coaching hubs with years of proven success.' },
+              { icon: '💡', title: 'Regular Doubt-Solving', desc: 'Interactive discussion sessions & one-on-one doubt clearing for deep conceptual clarity.' },
+              { icon: '🌱', title: 'Supportive Environment', desc: 'A supportive, motivating, and disciplined learning environment that inspires excellence.' },
+              { icon: '📊', title: 'Regular Test Series', desc: 'Comprehensive test series with detailed performance analysis, analytics, and rank tracking.' },
             ].map((f) => (
               <div key={f.title} className="feature-box">
                 <div className="feature-icon">{f.icon}</div>
