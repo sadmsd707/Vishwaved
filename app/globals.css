@@ -1188,3 +1188,42 @@ tr:hover td { background: #f8fafc; }
   .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* ─── Alerts ─── */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.alert-error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+.alert-success {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* ─── Form Errors ─── */
+.form-error {
+  display: block;
+  color: var(--danger);
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* ─── Danger Button ─── */
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+}
+.btn-danger:hover {
+  background: #be123c;
+  transform: translateY(-1px);
+}

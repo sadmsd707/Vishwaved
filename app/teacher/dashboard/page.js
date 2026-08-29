@@ -43,7 +43,10 @@ export default async function DashboardPage() {
             <h1>My Tests</h1>
             <p className="text-secondary text-sm mt-1">Create, manage and publish your tests from here.</p>
           </div>
-          <Link href="/teacher/test/new" className="btn btn-primary">+ Create Test</Link>
+          <div className="flex-gap">
+            <Link href="/teacher/students" className="btn btn-secondary">👨‍🎓 Students</Link>
+            <Link href="/teacher/test/new" className="btn btn-primary">+ Create Test</Link>
+          </div>
         </div>
 
         {/* Stats */}
