@@ -23,7 +23,7 @@ export default async function SubmittedPage({ searchParams }) {
         )}
 
         <div className="flex-gap" style={{ justifyContent: 'center' }}>
-          <Link href="/student" className="btn btn-primary">Go to Student Portal</Link>
+          <Link href="/student/dashboard" className="btn btn-primary">Go to Dashboard</Link>
           <Link href="/" className="btn btn-secondary">Home</Link>
         </div>
       </div>

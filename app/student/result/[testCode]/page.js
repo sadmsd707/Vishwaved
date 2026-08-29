@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import db from '@/lib/db'
+import { getStudentSession } from '@/lib/session'
 
 export const metadata = { title: 'Your Result — VishwaVed Academy' }
 
@@ -9,9 +10,10 @@ const OPTION_KEYS = ['A', 'B', 'C', 'D']
 export default async function ResultPage({ params, searchParams }) {
   const p = await params
   const sp = await searchParams
+  const session = await getStudentSession()
 
-  const studentName = sp.name?.toString().trim()
-  const studentRoll = sp.roll?.toString().trim()
+  const studentName = sp.name?.toString().trim() || session?.student?.name
+  const studentRoll = sp.roll?.toString().trim() || sp.studentId?.toString().trim() || session?.student?.id
 
   if (!studentName || !studentRoll) {
     return (
@@ -19,8 +21,8 @@ export default async function ResultPage({ params, searchParams }) {
         <div className="card text-center" style={{ maxWidth: '420px' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⚠️</div>
           <h2>Missing Details</h2>
-          <p className="text-muted mt-2">Please go back and enter your name and roll number.</p>
-          <Link href="/student" className="btn btn-primary mt-3">Back to Portal</Link>
+          <p className="text-muted mt-2">Please login to view your test results.</p>
+          <Link href="/student" className="btn btn-primary mt-3">Back to Student Login</Link>
         </div>
       </div>
     )
@@ -191,7 +193,9 @@ export default async function ResultPage({ params, searchParams }) {
         )}
 
         <div className="text-center mt-4">
-          <Link href="/student" className="btn btn-secondary">Back to Student Portal</Link>
+          <Link href={session?.student ? "/student/dashboard" : "/student"} className="btn btn-secondary">
+            {session?.student ? "← Back to Dashboard" : "Back to Student Login"}
+          </Link>
         </div>
       </div>
     </div>
