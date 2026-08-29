@@ -1227,3 +1227,94 @@ tr:hover td { background: #f8fafc; }
   background: #be123c;
   transform: translateY(-1px);
 }
+
+/* ─── Teacher Hamburger Menu ─── */
+.teacher-hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.teacher-hamburger:hover {
+  border-color: var(--accent-1);
+  background: var(--bg-elevated);
+}
+.t-ham-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.t-ham-line.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.t-ham-line.open:nth-child(2) {
+  opacity: 0;
+}
+.t-ham-line.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ─── Teacher Dropdown ─── */
+.teacher-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  z-index: 100;
+}
+.t-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+.t-dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.3rem 0;
+}
+.t-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--font-body);
+}
+.t-dropdown-item:hover {
+  background: var(--bg-elevated);
+  color: var(--accent-1);
+}
+.t-dropdown-logout {
+  color: var(--danger);
+}
+.t-dropdown-logout:hover {
+  background: #fef2f2;
+  color: var(--danger);
+}
