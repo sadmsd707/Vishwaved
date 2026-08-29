@@ -213,40 +213,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── CONTACT / CTA ─── */}
-      <section className="cta-section" id="contact">
-        <div className="container">
-          <div className="cta-card">
-            <h2 style={{ marginBottom: '1.75rem' }}>Contact <span className="gradient-text">Us</span></h2>
-
-            <div className="contact-info-grid">
-              <div className="contact-info-item">
-                <span className="contact-info-icon">📍</span>
-                <span>P-97, near Bank of Maharastra , MIDC , Baramati.</span>
-              </div>
-              <div className="contact-info-item">
-                <span className="contact-info-icon">📞</span>
-                <span>
-                  <a href="tel:+919309362791">9309362791</a>, <a href="tel:+918668655731">8668655731</a><br />
-                  <a href="tel:+918766579632">8766579632</a>, <a href="tel:+919096346262">9096346262</a>
-                </span>
-              </div>
-              <div className="contact-info-item">
-                <span className="contact-info-icon">✉️</span>
-                <span><a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></span>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/student" className="btn btn-primary btn-lg">Student Portal</Link>
-              <Link href="/teacher/login" className="btn btn-accent btn-lg">Faculty Login</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── FOOTER ─── */}
-      <footer className="academy-footer">
+      <footer className="academy-footer" id="contact">
         <div className="container">
           <div className="footer-grid">
             <div className="footer-col">
