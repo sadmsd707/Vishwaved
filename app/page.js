@@ -225,7 +225,7 @@ export default function LandingPage() {
             <div className="contact-info-grid">
               <div className="contact-info-item">
                 <span className="contact-info-icon">📍</span>
-                <span>Baramati, Maharashtra</span>
+                <span>P-97, near Bank of Maharastra , MIDC , Baramati.</span>
               </div>
               <div className="contact-info-item">
                 <span className="contact-info-icon">📞</span>
@@ -281,7 +281,7 @@ export default function LandingPage() {
             <div className="footer-col">
               <h4>Contact Us</h4>
               <ul className="footer-links">
-                <li>📍 Baramati, Maharashtra, India</li>
+                <li>📍 P-97, near Bank of Maharastra , MIDC , Baramati.</li>
                 <li>📞 +91 98765 43210</li>
                 <li>✉️ info@vishwaved.academy</li>
                 <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
