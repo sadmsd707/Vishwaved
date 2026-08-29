@@ -109,12 +109,11 @@ export default function LandingPage() {
 
           <div className="courses-grid">
             {[
-              { icon: '🔬', title: 'Science', desc: 'Physics, Chemistry & Biology with hands-on practicals and conceptual clarity for board and competitive exams.', tag: 'Class 8–12' },
-              { icon: '📐', title: 'Mathematics', desc: 'Algebra, Calculus, Geometry and problem-solving — building strong logical foundations.', tag: 'Class 8–12' },
-              { icon: '⚙️', title: 'Engineering Prep', desc: 'JEE Main & Advanced preparation with expert coaching, mock tests, and personalized guidance.', tag: 'JEE / CET' },
-              { icon: '📊', title: 'Commerce', desc: 'Accounts, Economics, Business Studies — preparing future chartered accountants and entrepreneurs.', tag: 'Class 11–12' },
-              { icon: '🏆', title: 'Competitive Exams', desc: 'NEET, JEE, CET, Olympiad preparation with curated test series and performance analytics.', tag: 'All Levels' },
-              { icon: '💻', title: 'Computer Science', desc: 'Programming, Data Structures, and Digital Literacy — building the tech leaders of tomorrow.', tag: 'Class 8–12' },
+              { icon: '⚙️', title: 'JEE (Mains)', desc: 'Comprehensive coaching for JEE Main with in-depth concept coverage, problem-solving techniques, and rigorous test series.', tag: 'Engineering' },
+              { icon: '🚀', title: 'JEE (Advance)', desc: 'Advanced problem-solving, multi-concept questions, and intensive preparation to secure top ranks in IIT JEE Advanced.', tag: 'IIT Prep' },
+              { icon: '🩺', title: 'NEET', desc: 'Focused medical entrance coaching covering Physics, Chemistry, and Biology with NCERT mastery and speed tests.', tag: 'Medical' },
+              { icon: '⚡', title: 'MHTCET', desc: 'Targeted preparation for Maharashtra State Common Entrance Test with shortcut tricks, speed-accuracy training, and mock tests.', tag: 'State CET' },
+              { icon: '🌱', title: 'FOUNDATION', desc: 'Strong fundamentals in Science & Mathematics for early grades to build analytical thinking and Olympiad readiness.', tag: 'Class 8–10' },
             ].map((c) => (
               <div key={c.title} className="course-card">
                 <div>
