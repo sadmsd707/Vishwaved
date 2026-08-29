@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getStudentSessionRequired } from '@/lib/session'
 import { logoutStudent } from '@/actions/student-auth'
 import db from '@/lib/db'
+import StudentNav from '@/app/components/StudentNav'
 
 export const metadata = { title: 'Student Dashboard — VishwaVed Academy' }
 
@@ -25,18 +26,12 @@ export default async function StudentDashboardPage() {
   return (
     <div className="page">
       {/* Navbar */}
-      <nav className="navbar">
-        <div className="navbar-inner">
-          <Link href="/student/dashboard" className="navbar-brand">VishwaVed Academy</Link>
-          <div className="navbar-actions">
-            <span className="text-sm text-muted">👋 {student.name}</span>
-            <span className="badge badge-active">{student.class}</span>
-            <form action={logoutStudent}>
-              <button type="submit" className="btn btn-secondary btn-sm">Logout</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+      <StudentNav
+        studentName={student.name}
+        studentId={student.id}
+        studentClass={student.class}
+        logoutAction={logoutStudent}
+      />
 
       <div className="container" style={{ paddingTop: '2rem' }}>
         {/* Welcome */}
