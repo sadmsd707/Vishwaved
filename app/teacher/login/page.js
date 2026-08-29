@@ -41,9 +41,7 @@ export default function LoginPage() {
               {loading ? 'Logging in…' : 'Login to Dashboard'}
             </button>
           </form>
-          <p className="text-center text-sm text-muted mt-3">
-            Don&apos;t have an account? <Link href="/teacher/signup">Register as Faculty →</Link>
-          </p>
+
         </div>
       </div>
     </div>

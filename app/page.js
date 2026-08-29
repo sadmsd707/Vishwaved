@@ -239,7 +239,7 @@ export default function LandingPage() {
 
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/student" className="btn btn-primary btn-lg">Student Portal</Link>
-              <Link href="/teacher/signup" className="btn btn-accent btn-lg">Register as Faculty</Link>
+              <Link href="/teacher/login" className="btn btn-accent btn-lg">Faculty Login</Link>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@ export default function LandingPage() {
               <ul className="footer-links">
                 <li><Link href="/student">Student Portal</Link></li>
                 <li><Link href="/teacher/login">Faculty Login</Link></li>
-                <li><Link href="/teacher/signup">Faculty Registration</Link></li>
+
               </ul>
             </div>
             <div className="footer-col">

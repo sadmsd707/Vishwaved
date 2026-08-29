@@ -156,13 +156,6 @@ export default function Navbar() {
               </div>
             </Link>
 
-            <Link
-              href="/teacher/signup"
-              className="drawer-signup-link"
-              onClick={() => setIsOpen(false)}
-            >
-              New Faculty? <strong>Register here →</strong>
-            </Link>
           </div>
         </div>
       </div>

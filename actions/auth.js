@@ -6,35 +6,7 @@ import db from '@/lib/db'
 import { setSession, destroySession } from '@/lib/session'
 
 export async function signupTeacher(formData) {
-  try {
-    const name = formData.get('name')?.toString().trim()
-    const email = formData.get('email')?.toString().trim().toLowerCase()
-    const password = formData.get('password')?.toString()
-
-    const errors = {}
-    if (!name || name.length < 2) errors.name = 'Name must be at least 2 characters.'
-    if (!email || !email.includes('@')) errors.email = 'A valid email is required.'
-    if (!password || password.length < 8) errors.password = 'Password must be at least 8 characters.'
-
-    if (Object.keys(errors).length > 0) return { errors }
-
-    const existing = await db.teacher.findUnique({ where: { email } })
-    if (existing) return { errors: { email: 'An account with this email already exists.' } }
-
-    const passwordHash = await bcrypt.hash(password, 12)
-    await db.teacher.create({
-      data: {
-        name,
-        email,
-        passwordHash,
-      },
-    })
-
-    return { success: true }
-  } catch (err) {
-    console.error('Signup error:', err)
-    return { errors: { general: err.message || 'Failed to create account. Please try again.' } }
-  }
+  return { errors: { general: 'Registration is closed. Please contact the administrator.' } }
 }
 
 export async function loginTeacher(formData) {
