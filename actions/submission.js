@@ -77,17 +77,30 @@ export async function submitTest(testCode, formData) {
 }
 
 export async function startTest(formData) {
+  const studentId = formData.get('studentId')?.toString().trim()
+  const dob = formData.get('dob')?.toString().trim()
   const testCode = formData.get('testCode')?.toString().trim().toUpperCase()
-  const studentName = formData.get('studentName')?.toString().trim()
-  const studentRoll = formData.get('studentRoll')?.toString().trim()
 
-  if (!testCode) return { errors: { testCode: 'Test ID is required.' } }
-  if (!studentName) return { errors: { studentName: 'Name is required.' } }
-  if (!studentRoll) return { errors: { studentRoll: 'Roll number is required.' } }
+  if (!studentId) return { errors: { studentId: 'Student ID is required.' } }
+  if (!dob) return { errors: { dob: 'Date of birth is required.' } }
+  if (!testCode) return { errors: { testCode: 'Test Code is required.' } }
+
+  // Verify student exists
+  const student = await db.student.findUnique({ where: { id: studentId } })
+  if (!student) return { errors: { studentId: 'Invalid Student ID. Please check and try again.' } }
+
+  // Verify DOB matches
+  const studentDob = new Date(student.dob).toISOString().split('T')[0]
+  const inputDob = new Date(dob).toISOString().split('T')[0]
+  if (studentDob !== inputDob) return { errors: { dob: 'Date of birth does not match. Please check.' } }
+
+  // Build full name from student record
+  const studentName = `${student.firstName} ${student.middleName} ${student.surname}`
+  const studentRoll = student.id
 
   const test = await db.test.findUnique({ where: { testCode } })
 
-  if (!test) return { errors: { testCode: 'Invalid Test ID. Please check and try again.' } }
+  if (!test) return { errors: { testCode: 'Invalid Test Code. Please check and try again.' } }
   if (!test.isActive) return { errors: { testCode: 'This test is currently disabled by the teacher.' } }
 
   const now = new Date()

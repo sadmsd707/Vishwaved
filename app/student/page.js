@@ -39,31 +39,31 @@ export default function StudentHomePage() {
 
         {tab === 'take' && (
           <div className="card animate-in">
-            <h3 className="mb-3">Enter Test Details</h3>
+            <h3 className="mb-3">Login & Start Test</h3>
             {errors.general && <div className="alert alert-error">{errors.general}</div>}
 
             <form onSubmit={handleTakeTest}>
               <div className="form-group">
-                <label className="form-label" htmlFor="testCode">Test ID *</label>
+                <label className="form-label" htmlFor="studentId">Student ID *</label>
+                <input id="studentId" name="studentId" type="text" className="form-input"
+                  placeholder="Enter your Student ID" required
+                  style={{ letterSpacing: '0.05em', fontWeight: '600' }} />
+                {errors.studentId && <div className="form-error">{errors.studentId}</div>}
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="dob">Date of Birth *</label>
+                <input id="dob" name="dob" type="date" className="form-input" required />
+                {errors.dob && <div className="form-error">{errors.dob}</div>}
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="testCode">Test Code *</label>
                 <input id="testCode" name="testCode" type="text" className="form-input"
                   placeholder="e.g. TEST-7F3A9C" required
                   style={{ textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '700' }} />
                 {errors.testCode && <div className="form-error">{errors.testCode}</div>}
               </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label" htmlFor="studentName">Your Name *</label>
-                  <input id="studentName" name="studentName" type="text" className="form-input" placeholder="Full name" required />
-                  {errors.studentName && <div className="form-error">{errors.studentName}</div>}
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="studentRoll">Roll Number / ID *</label>
-                  <input id="studentRoll" name="studentRoll" type="text" className="form-input" placeholder="e.g. 21CS101" required />
-                  {errors.studentRoll && <div className="form-error">{errors.studentRoll}</div>}
-                </div>
-              </div>
               <button type="submit" className="btn btn-primary btn-full" disabled={loading}>
-                {loading ? 'Checking…' : 'Start Test →'}
+                {loading ? 'Verifying…' : 'Login & Start Test →'}
               </button>
             </form>
           </div>
@@ -74,20 +74,16 @@ export default function StudentHomePage() {
             <h3 className="mb-3">View Your Result</h3>
             <form action="/student/result" method="GET">
               <div className="form-group">
-                <label className="form-label" htmlFor="rc">Test ID *</label>
+                <label className="form-label" htmlFor="rsid">Student ID *</label>
+                <input id="rsid" name="studentId" type="text" className="form-input"
+                  placeholder="Enter your Student ID" required
+                  style={{ letterSpacing: '0.05em', fontWeight: '600' }} />
+              </div>
+              <div className="form-group">
+                <label className="form-label" htmlFor="rc">Test Code *</label>
                 <input id="rc" name="code" type="text" className="form-input"
                   placeholder="e.g. TEST-7F3A9C" required
                   style={{ textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '700' }} />
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label" htmlFor="rname">Your Name *</label>
-                  <input id="rname" name="name" type="text" className="form-input" placeholder="Full name" required />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="rroll">Roll Number / ID *</label>
-                  <input id="rroll" name="roll" type="text" className="form-input" placeholder="e.g. 21CS101" required />
-                </div>
               </div>
               <button type="submit" className="btn btn-primary btn-full">View Result →</button>
             </form>
