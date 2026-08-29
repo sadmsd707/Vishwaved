@@ -12,10 +12,19 @@ export default async function DashboardPage() {
   const tests = await db.test.findMany({
     where: { teacherId: teacher.id },
     include: {
-      _count: { select: { questions: true, submissions: true } },
+      questions: true,
+      submissions: true,
     },
     orderBy: { createdAt: 'desc' },
   })
+
+  // Add _count manually for compatibility
+  for (const t of tests) {
+    t._count = {
+      questions: (t.questions || []).length,
+      submissions: (t.submissions || []).length,
+    }
+  }
 
   const totalTests = tests.length
   const totalSubmissions = tests.reduce((s, t) => s + t._count.submissions, 0)
