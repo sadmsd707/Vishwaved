@@ -43,8 +43,9 @@ export default async function DashboardPage() {
             <h1>My Tests</h1>
             <p className="text-secondary text-sm mt-1">Create, manage and publish your tests from here.</p>
           </div>
-          <div className="flex-gap">
+          <div className="flex-gap" style={{ flexWrap: 'wrap' }}>
             <Link href="/teacher/students" className="btn btn-secondary">👨‍🎓 Students</Link>
+            <Link href="/teacher/attendance" className="btn btn-secondary">📅 Attendance</Link>
             <Link href="/teacher/test/new" className="btn btn-primary">+ Create Test</Link>
           </div>
         </div>
