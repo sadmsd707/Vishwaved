@@ -217,10 +217,7 @@ export default function LandingPage() {
       <section className="cta-section" id="contact">
         <div className="container">
           <div className="cta-card">
-            <h2 style={{ marginBottom: '0.75rem' }}>Ready to Begin Your <span className="gradient-text">Journey?</span></h2>
-            <p style={{ fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto 2rem', color: 'var(--text-secondary)' }}>
-              Join VishwaVed Academy today and take the first step towards academic excellence.
-            </p>
+            <h2 style={{ marginBottom: '1.75rem' }}>Contact <span className="gradient-text">Us</span></h2>
 
             <div className="contact-info-grid">
               <div className="contact-info-item">
