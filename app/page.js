@@ -229,11 +229,14 @@ export default function LandingPage() {
               </div>
               <div className="contact-info-item">
                 <span className="contact-info-icon">📞</span>
-                <span>+91 98765 43210</span>
+                <span>
+                  <a href="tel:+919309362791">9309362791</a>, <a href="tel:+918668655731">8668655731</a><br />
+                  <a href="tel:+918766579632">8766579632</a>, <a href="tel:+919096346262">9096346262</a>
+                </span>
               </div>
               <div className="contact-info-item">
                 <span className="contact-info-icon">✉️</span>
-                <span>info@vishwaved.academy</span>
+                <span><a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></span>
               </div>
             </div>
 
@@ -282,8 +285,9 @@ export default function LandingPage() {
               <h4>Contact Us</h4>
               <ul className="footer-links">
                 <li>📍 P-97, near Bank of Maharastra , MIDC , Baramati.</li>
-                <li>📞 +91 98765 43210</li>
-                <li>✉️ info@vishwaved.academy</li>
+                <li>📞 <a href="tel:+919309362791">9309362791</a> / <a href="tel:+918668655731">8668655731</a></li>
+                <li>📞 <a href="tel:+918766579632">8766579632</a> / <a href="tel:+919096346262">9096346262</a></li>
+                <li>✉️ <a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></li>
                 <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
               </ul>
             </div>
