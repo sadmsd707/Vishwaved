@@ -221,7 +221,9 @@ export default function LandingPage() {
           <div className="footer-grid">
             <div className="footer-col">
               <Link href="/" className="brand-logo" style={{ marginBottom: '0.75rem' }}>
-                <div className="brand-icon">🎓</div>
+                <div className="brand-icon" style={{ overflow: 'hidden', padding: 0 }}>
+                  <img src="/vishwvedlogo.jpeg" alt="VishwaVed Logo" width="38" height="38" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
                 <div>
                   <div className="brand-name">VishwaVed</div>
                   <div className="brand-sub">Academy</div>

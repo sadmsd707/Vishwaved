@@ -32,7 +32,9 @@ export default function Navbar() {
         <div className="academy-nav-inner">
           {/* Brand Logo */}
           <Link href="/" className="brand-logo" onClick={() => setIsOpen(false)}>
-            <div className="brand-icon">🎓</div>
+            <div className="brand-icon" style={{ overflow: 'hidden', padding: 0 }}>
+              <img src="/vishwvedlogo.jpeg" alt="VishwaVed Logo" width="38" height="38" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
             <div>
               <div className="brand-name">VishwaVed</div>
               <div className="brand-sub">Academy</div>
@@ -79,7 +81,9 @@ export default function Navbar() {
       <div className={`mobile-drawer ${isOpen ? 'open' : ''}`} role="dialog" aria-modal="true">
         <div className="drawer-header">
           <Link href="/" className="brand-logo" onClick={() => setIsOpen(false)}>
-            <div className="brand-icon">🎓</div>
+            <div className="brand-icon" style={{ overflow: 'hidden', padding: 0 }}>
+              <img src="/vishwvedlogo.jpeg" alt="VishwaVed Logo" width="38" height="38" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
             <div>
               <div className="brand-name">VishwaVed</div>
               <div className="brand-sub">Academy</div>
