@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /teacher/dashboard
+Disallow: /teacher/test
+Disallow: /teacher/students
+Disallow: /teacher/attendance
+Disallow: /student/dashboard
+Disallow: /student/test
+
+Sitemap: https://vishwaved.vercel.app/sitemap.xml
