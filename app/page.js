@@ -242,6 +242,26 @@ export default function LandingPage() {
               <p className="footer-desc">
                 Empowering students with knowledge, skills, and confidence to excel in academics and beyond.
               </p>
+
+              {/* Embedded Google Maps */}
+              <div className="footer-map-container">
+                <iframe
+                  title="VishwaVed Academy Location Map"
+                  src="https://maps.google.com/maps?q=P-97%2C%20near%20Bank%20of%20Maharashtra%2C%20MIDC%2C%20Baramati&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="footer-map-iframe"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+                <a
+                  href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-map-link-btn"
+                >
+                  <span>📍</span> Open in Google Maps ↗
+                </a>
+              </div>
             </div>
             <div className="footer-col">
               <h4>Quick Links</h4>
@@ -280,26 +300,6 @@ export default function LandingPage() {
                 <li>✉️ <a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></li>
                 <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
               </ul>
-
-              {/* Embedded Google Maps */}
-              <div className="footer-map-container">
-                <iframe
-                  title="VishwaVed Academy Location Map"
-                  src="https://maps.google.com/maps?q=P-97%2C%20near%20Bank%20of%20Maharashtra%2C%20MIDC%2C%20Baramati&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                  className="footer-map-iframe"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-                <a
-                  href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-map-link-btn"
-                >
-                  <span>📍</span> Open in Google Maps ↗
-                </a>
-              </div>
             </div>
           </div>
           <div className="footer-bottom">
