@@ -1206,6 +1206,46 @@ tr:hover td { background: #f8fafc; }
   color: var(--text-secondary);
 }
 
+/* Footer Google Map */
+.footer-map-container {
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-map-iframe {
+  width: 100%;
+  height: 140px;
+  border: none;
+  display: block;
+}
+
+.footer-map-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-elevated);
+  color: var(--accent-3);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.footer-map-link-btn:hover {
+  background: var(--accent-1);
+  color: #ffffff;
+}
+
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) {
   .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }

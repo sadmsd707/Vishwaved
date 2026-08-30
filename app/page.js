@@ -265,12 +265,41 @@ export default function LandingPage() {
             <div className="footer-col">
               <h4>Contact Us</h4>
               <ul className="footer-links">
-                <li>📍 P-97, near Bank of Maharastra , MIDC , Baramati.</li>
+                <li>
+                  <a
+                    href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'inherit' }}
+                  >
+                    📍 P-97, near Bank of Maharastra , MIDC , Baramati.
+                  </a>
+                </li>
                 <li>📞 <a href="tel:+919309362791">9309362791</a> / <a href="tel:+918668655731">8668655731</a></li>
                 <li>📞 <a href="tel:+918766579632">8766579632</a> / <a href="tel:+919096346262">9096346262</a></li>
                 <li>✉️ <a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></li>
                 <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
               </ul>
+
+              {/* Embedded Google Maps */}
+              <div className="footer-map-container">
+                <iframe
+                  title="VishwaVed Academy Location Map"
+                  src="https://maps.google.com/maps?q=P-97%2C%20near%20Bank%20of%20Maharashtra%2C%20MIDC%2C%20Baramati&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  className="footer-map-iframe"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+                <a
+                  href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-map-link-btn"
+                >
+                  <span>📍</span> Open in Google Maps ↗
+                </a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">
