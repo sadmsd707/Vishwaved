@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Navbar from './components/Navbar'
+import InquirySection from './components/InquirySection'
 
 export const metadata = {
   title: 'VishwaVed Academy — Excellence in Education & Online Testing',
@@ -33,7 +34,8 @@ export default function LandingPage() {
           </p>
 
           <div className="hero-cta-row">
-            <a href="#courses" className="btn btn-primary btn-lg">Explore Courses ↓</a>
+            <a href="#inquiry" className="btn btn-primary btn-lg">Inquiry Now ✍️</a>
+            <a href="#courses" className="btn btn-secondary btn-lg">Explore Courses ↓</a>
           </div>
         </div>
       </section>
@@ -104,6 +106,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── INQUIRY & REGISTRATION BANNER ─── */}
+      <InquirySection />
 
       {/* ─── COURSES ─── */}
       <section className="section" id="courses">
@@ -242,6 +247,7 @@ export default function LandingPage() {
               <h4>Quick Links</h4>
               <ul className="footer-links">
                 <li><a href="#about">About Us</a></li>
+                <li><a href="#inquiry">Inquire Now</a></li>
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#faculty">Faculty</a></li>
                 <li><a href="#contact">Contact</a></li>

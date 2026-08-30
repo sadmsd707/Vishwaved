@@ -44,6 +44,7 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <div className="nav-links">
             <a href="#about">About</a>
+            <a href="#inquiry">Inquiry</a>
             <a href="#courses">Courses</a>
             <a href="#faculty">Faculty</a>
             <a href="#contact">Contact</a>
@@ -105,6 +106,11 @@ export default function Navbar() {
             <li>
               <a href="#about" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">🏫</span> About Academy
+              </a>
+            </li>
+            <li>
+              <a href="#inquiry" onClick={() => setIsOpen(false)}>
+                <span className="drawer-icon">✍️</span> Inquire Now
               </a>
             </li>
             <li>
