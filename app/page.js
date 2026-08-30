@@ -222,92 +222,98 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── INQUIRY & REGISTRATION BANNER (Below Reviews) ─── */}
-      <InquirySection />
+      {/* ─── UNIFIED INQUIRY & FOOTER SECTION WITH SHARED BACKGROUND ─── */}
+      <div className="inquiry-footer-unified-wrap">
+        <div className="inquiry-footer-unified-overlay" />
+        <div className="inquiry-footer-unified-content">
+          {/* Inquiry Banner */}
+          <InquirySection />
 
-      {/* ─── FOOTER ─── */}
-      <footer className="academy-footer" id="contact">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-col">
-              <Link href="/" className="brand-logo" style={{ marginBottom: '0.75rem' }}>
-                <div className="brand-icon" style={{ overflow: 'hidden', padding: 0 }}>
-                  <img src="/vishwvedlogo.jpeg" alt="VishwaVed Logo" width="38" height="38" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <div>
-                  <div className="brand-name">VishwaVed</div>
-                  <div className="brand-sub">Academy</div>
-                </div>
-              </Link>
-              <p className="footer-desc">
-                Empowering students with knowledge, skills, and confidence to excel in academics and beyond.
-              </p>
+          {/* Footer */}
+          <footer className="academy-footer" id="contact">
+            <div className="container">
+              <div className="footer-grid">
+                <div className="footer-col">
+                  <Link href="/" className="brand-logo" style={{ marginBottom: '0.75rem' }}>
+                    <div className="brand-icon" style={{ overflow: 'hidden', padding: 0 }}>
+                      <img src="/vishwvedlogo.jpeg" alt="VishwaVed Logo" width="38" height="38" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <div>
+                      <div className="brand-name">VishwaVed</div>
+                      <div className="brand-sub">Academy</div>
+                    </div>
+                  </Link>
+                  <p className="footer-desc">
+                    Empowering students with knowledge, skills, and confidence to excel in academics and beyond.
+                  </p>
 
-              {/* Embedded Google Maps */}
-              <div className="footer-map-container">
-                <iframe
-                  title="Vishwved Science Academy Location Map"
-                  src="https://maps.google.com/maps?q=18.1831149,74.6084778+(Vishwved+science+academy)&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  className="footer-map-iframe"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-                <a
-                  href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-map-link-btn"
-                >
-                  <span>📍</span> Open in Google Maps ↗
-                </a>
+                  {/* Embedded Google Maps */}
+                  <div className="footer-map-container">
+                    <iframe
+                      title="Vishwved Science Academy Location Map"
+                      src="https://maps.google.com/maps?q=18.1831149,74.6084778+(Vishwved+science+academy)&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                      className="footer-map-iframe"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                    <a
+                      href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="footer-map-link-btn"
+                    >
+                      <span>📍</span> Open in Google Maps ↗
+                    </a>
+                  </div>
+                </div>
+                <div className="footer-col">
+                  <h4>Quick Links</h4>
+                  <ul className="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#inquiry">Inquire Now</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#faculty">Faculty</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                  </ul>
+                </div>
+                <div className="footer-col">
+                  <h4>Portals</h4>
+                  <ul className="footer-links">
+                    <li><Link href="/student">Student Portal</Link></li>
+                    <li><Link href="/teacher/login">Faculty Login</Link></li>
+
+                  </ul>
+                </div>
+                <div className="footer-col">
+                  <h4>Contact Us</h4>
+                  <ul className="footer-links">
+                    <li>
+                      <a
+                        href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit' }}
+                      >
+                        📍 P-97, near Bank of Maharastra , MIDC , Baramati.
+                      </a>
+                    </li>
+                    <li>📞 <a href="tel:+919309362791">9309362791</a> / <a href="tel:+918668655731">8668655731</a></li>
+                    <li>📞 <a href="tel:+918766579632">8766579632</a> / <a href="tel:+919096346262">9096346262</a></li>
+                    <li>✉️ <a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></li>
+                    <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="footer-bottom">
+                <span>© {new Date().getFullYear()} VishwaVed Academy. All rights reserved.</span>
+                <span><Link href="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> · Built with ❤️ for education</span>
               </div>
             </div>
-            <div className="footer-col">
-              <h4>Quick Links</h4>
-              <ul className="footer-links">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#inquiry">Inquire Now</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#faculty">Faculty</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h4>Portals</h4>
-              <ul className="footer-links">
-                <li><Link href="/student">Student Portal</Link></li>
-                <li><Link href="/teacher/login">Faculty Login</Link></li>
-
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h4>Contact Us</h4>
-              <ul className="footer-links">
-                <li>
-                  <a
-                    href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: 'inherit' }}
-                  >
-                    📍 P-97, near Bank of Maharastra , MIDC , Baramati.
-                  </a>
-                </li>
-                <li>📞 <a href="tel:+919309362791">9309362791</a> / <a href="tel:+918668655731">8668655731</a></li>
-                <li>📞 <a href="tel:+918766579632">8766579632</a> / <a href="tel:+919096346262">9096346262</a></li>
-                <li>✉️ <a href="mailto:vishw.vedacademy@gmail.com">vishw.vedacademy@gmail.com</a></li>
-                <li>🕐 Mon–Sat: 8 AM – 8 PM</li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} VishwaVed Academy. All rights reserved.</span>
-            <span><Link href="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> · Built with ❤️ for education</span>
-          </div>
+          </footer>
         </div>
-      </footer>
+      </div>
     </>
   )
 }

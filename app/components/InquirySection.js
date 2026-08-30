@@ -179,8 +179,6 @@ export default function InquirySection() {
 
   return (
     <section className="inquiry-banner-section" id="inquiry">
-      <div className="inquiry-banner-overlay" />
-      
       <div className="container inquiry-banner-container">
         <div className="inquiry-grid">
           
