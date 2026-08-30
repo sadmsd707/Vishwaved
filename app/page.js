@@ -246,15 +246,15 @@ export default function LandingPage() {
               {/* Embedded Google Maps */}
               <div className="footer-map-container">
                 <iframe
-                  title="VishwaVed Academy Location Map"
-                  src="https://maps.google.com/maps?q=P-97%2C%20near%20Bank%20of%20Maharashtra%2C%20MIDC%2C%20Baramati&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                  title="Vishwved Science Academy Location Map"
+                  src="https://maps.google.com/maps?q=18.1831149,74.6084778+(Vishwved+science+academy)&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   className="footer-map-iframe"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
                 />
                 <a
-                  href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
+                  href="https://www.google.com/maps/place/Vishwved+science+academy/@18.1831149,74.6084778,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc3750b32136233:0xec1c5002d5fce64c!8m2!3d18.1831149!4d74.6084778!16s%2Fg%2F11nqxp1x1c"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-map-link-btn"
@@ -287,7 +287,7 @@ export default function LandingPage() {
               <ul className="footer-links">
                 <li>
                   <a
-                    href="https://maps.google.com/?q=P-97,+near+Bank+of+Maharashtra,+MIDC,+Baramati"
+                    href="https://www.google.com/maps/place/Vishwved+science+academy/@18.1831149,74.6084778,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc3750b32136233:0xec1c5002d5fce64c!8m2!3d18.1831149!4d74.6084778!16s%2Fg%2F11nqxp1x1c"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'inherit' }}
