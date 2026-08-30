@@ -80,3 +80,57 @@ export async function deleteStudent(formData) {
     return { errors: { general: err.message || 'Failed to delete student.' } }
   }
 }
+
+export async function editStudent(formData) {
+  try {
+    const session = await getTeacherSession()
+    const studentId = formData.get('studentId')?.toString().trim()
+    const firstName = formData.get('firstName')?.toString().trim()
+    const middleName = formData.get('middleName')?.toString().trim()
+    const surname = formData.get('surname')?.toString().trim()
+    const dob = formData.get('dob')?.toString().trim()
+    const studentClass = formData.get('class')?.toString().trim()
+    const mobile = formData.get('mobile')?.toString().trim()
+    const parentMobile = formData.get('parentMobile')?.toString().trim()
+    const mothersName = formData.get('mothersName')?.toString().trim()
+
+    const errors = {}
+    if (!studentId) errors.general = 'Student ID is missing.'
+    if (!firstName) errors.firstName = 'First name is required.'
+    if (!middleName) errors.middleName = 'Middle name is required.'
+    if (!surname) errors.surname = 'Surname is required.'
+    if (!dob) errors.dob = 'Date of birth is required.'
+    if (!studentClass) errors.class = 'Class is required.'
+    if (!mobile || mobile.length < 10) errors.mobile = 'Valid mobile number is required.'
+    if (!parentMobile || parentMobile.length < 10) errors.parentMobile = 'Valid parent mobile is required.'
+    if (!mothersName) errors.mothersName = "Mother's name is required."
+
+    if (Object.keys(errors).length > 0) return { errors }
+
+    // Verify the student belongs to this teacher
+    const student = await db.student.findUnique({ where: { id: studentId } })
+    if (!student || student.teacherId !== session.teacher.id) {
+      return { errors: { general: 'Student not found or access denied.' } }
+    }
+
+    await db.student.update({
+      where: { id: studentId },
+      data: {
+        firstName,
+        middleName,
+        surname,
+        dob: new Date(dob),
+        class: studentClass,
+        mobile,
+        parentMobile,
+        mothersName,
+      },
+    })
+
+    revalidatePath('/teacher/students')
+    return { success: true }
+  } catch (err) {
+    console.error('Edit student error:', err)
+    return { errors: { general: err.message || 'Failed to update student.' } }
+  }
+}

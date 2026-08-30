@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { getTeacherSession } from '@/lib/session'
 import { logoutTeacher } from '@/actions/auth-redirect'
 import db from '@/lib/db'
-import AddStudentForm, { DeleteStudentButton } from './StudentForm'
+import AddStudentForm, { DeleteStudentButton, EditStudentButton } from './StudentForm'
 import TeacherNav from '@/app/components/TeacherNav'
 
 export const metadata = { title: 'Students — VishwaVed Academy' }
@@ -97,7 +97,7 @@ export default async function StudentsPage({ searchParams }) {
                     <th style={{ padding: '0.75rem 0.5rem', fontWeight: 700 }}>Mobile</th>
                     <th style={{ padding: '0.75rem 0.5rem', fontWeight: 700 }}>Parent Mobile</th>
                     <th style={{ padding: '0.75rem 0.5rem', fontWeight: 700 }}>Mother&apos;s Name</th>
-                    <th style={{ padding: '0.75rem 0.5rem', fontWeight: 700 }}></th>
+                    <th style={{ padding: '0.75rem 0.5rem', fontWeight: 700 }}>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -119,7 +119,10 @@ export default async function StudentsPage({ searchParams }) {
                       <td style={{ padding: '0.6rem 0.5rem' }}>{s.parentMobile}</td>
                       <td style={{ padding: '0.6rem 0.5rem' }}>{s.mothersName}</td>
                       <td style={{ padding: '0.6rem 0.5rem' }}>
-                        <DeleteStudentButton studentId={s.id} />
+                        <div style={{ display: 'flex', gap: '0.35rem' }}>
+                          <EditStudentButton student={{ ...s, dob: s.dob?.toISOString ? s.dob.toISOString() : s.dob }} />
+                          <DeleteStudentButton studentId={s.id} />
+                        </div>
                       </td>
                     </tr>
                   ))}
