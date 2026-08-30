@@ -107,9 +107,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── INQUIRY & REGISTRATION BANNER ─── */}
-      <InquirySection />
-
       {/* ─── COURSES ─── */}
       <section className="section" id="courses">
         <div className="container">
@@ -224,6 +221,9 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── INQUIRY & REGISTRATION BANNER (Below Reviews) ─── */}
+      <InquirySection />
 
       {/* ─── FOOTER ─── */}
       <footer className="academy-footer" id="contact">
