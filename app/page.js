@@ -245,6 +245,7 @@ export default function LandingPage() {
                 <li><a href="#courses">Courses</a></li>
                 <li><a href="#faculty">Faculty</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
               </ul>
             </div>
             <div className="footer-col">
@@ -268,7 +269,7 @@ export default function LandingPage() {
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} VishwaVed Academy. All rights reserved.</span>
-            <span>Built with ❤️ for education</span>
+            <span><Link href="/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link> · Built with ❤️ for education</span>
           </div>
         </div>
       </footer>
