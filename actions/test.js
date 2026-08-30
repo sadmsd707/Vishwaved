@@ -42,6 +42,8 @@ export async function createTest(formData) {
   const timeLimit = timeLimitRaw ? parseInt(timeLimitRaw) : null
   const startAt = startAtRaw ? new Date(startAtRaw) : null
   const endAt = endAtRaw ? new Date(endAtRaw) : null
+  const resultsPublishAtRaw = formData.get('resultsPublishAt')?.toString().trim()
+  const resultsPublishAt = resultsPublishAtRaw ? new Date(resultsPublishAtRaw) : null
   const maxAttempts = maxAttemptsRaw ? parseInt(maxAttemptsRaw) : 1
   const testCode = await uniqueTestCode()
 
@@ -52,6 +54,7 @@ export async function createTest(formData) {
       timeLimit,
       startAt,
       endAt,
+      resultsPublishAt,
       displayMode,
       maxAttempts,
       testCode,
@@ -75,6 +78,8 @@ export async function updateTest(testId, formData) {
   const timeLimitRaw = formData.get('timeLimit')?.toString().trim()
   const startAtRaw = formData.get('startAt')?.toString().trim()
   const endAtRaw = formData.get('endAt')?.toString().trim()
+  const resultsPublishAtRaw = formData.get('resultsPublishAt')?.toString().trim()
+  const resultsPublishAt = resultsPublishAtRaw ? new Date(resultsPublishAtRaw) : null
   const displayMode = formData.get('displayMode')?.toString() || 'ALL'
   const maxAttemptsRaw = formData.get('maxAttempts')?.toString().trim()
   const showAnswers = formData.get('showAnswers') === 'true'
@@ -92,6 +97,7 @@ export async function updateTest(testId, formData) {
       timeLimit: timeLimitRaw ? parseInt(timeLimitRaw) : null,
       startAt: startAtRaw ? new Date(startAtRaw) : null,
       endAt: endAtRaw ? new Date(endAtRaw) : null,
+      resultsPublishAt,
       displayMode,
       maxAttempts: maxAttemptsRaw ? parseInt(maxAttemptsRaw) : 1,
       showAnswers,

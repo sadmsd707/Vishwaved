@@ -68,8 +68,12 @@ export default async function SubmissionsPage({ params }) {
             <div className="stat-label">Avg Score</div>
           </div>
           <div className="stat-card">
-            <div className="stat-value">{submissions.filter(s => s.isPublished).length}</div>
-            <div className="stat-label">Results Published</div>
+            <div className="stat-value">
+              {submissions.filter(s => s.isPublished || (test.resultsPublishAt && new Date(test.resultsPublishAt) <= new Date())).length}
+            </div>
+            <div className="stat-label">
+              {test.resultsPublishAt && new Date(test.resultsPublishAt) > new Date() ? 'Scheduled' : 'Results Published'}
+            </div>
           </div>
         </div>
 
@@ -95,27 +99,38 @@ export default async function SubmissionsPage({ params }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {submissions.map((sub, idx) => (
-                    <tr key={sub.id}>
-                      <td className="text-muted text-sm">{idx + 1}</td>
-                      <td style={{ fontWeight: '600' }}>{sub.studentName}</td>
-                      <td className="text-muted">{sub.studentRoll}</td>
-                      <td><ScoreBadge score={sub.totalScore} max={sub.maxScore} /></td>
-                      <td className="text-muted text-sm">
-                        {new Date(sub.submittedAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}
-                      </td>
-                      <td>
-                        <span className={`badge ${sub.isPublished ? 'badge-active' : 'badge-info'}`}>
-                          {sub.isPublished ? 'Published' : 'Pending'}
-                        </span>
-                      </td>
-                      <td>
-                        <Link href={`/teacher/test/${test.id}/submissions/${sub.id}`} className="btn btn-secondary btn-sm">
-                          View →
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
+                  {submissions.map((sub, idx) => {
+                    const isScheduleActive = test.resultsPublishAt && new Date(test.resultsPublishAt) > new Date()
+                    const isSubPublished = sub.isPublished || (test.resultsPublishAt && new Date(test.resultsPublishAt) <= new Date())
+
+                    return (
+                      <tr key={sub.id}>
+                        <td className="text-muted text-sm">{idx + 1}</td>
+                        <td style={{ fontWeight: '600' }}>{sub.studentName}</td>
+                        <td className="text-muted">{sub.studentRoll}</td>
+                        <td><ScoreBadge score={sub.totalScore} max={sub.maxScore} /></td>
+                        <td className="text-muted text-sm">
+                          {new Date(sub.submittedAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}
+                        </td>
+                        <td>
+                          {isSubPublished ? (
+                            <span className="badge badge-active">Published</span>
+                          ) : isScheduleActive ? (
+                            <span className="badge" style={{ background: 'var(--accent-1)', color: '#fff', fontSize: '0.75rem' }}>
+                              ⏰ Scheduled
+                            </span>
+                          ) : (
+                            <span className="badge badge-info">Pending</span>
+                          )}
+                        </td>
+                        <td>
+                          <Link href={`/teacher/test/${test.id}/submissions/${sub.id}`} className="btn btn-secondary btn-sm">
+                            View →
+                          </Link>
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             </div>

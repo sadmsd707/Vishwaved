@@ -26,8 +26,15 @@ export default async function StudentDashboardPage() {
     orderBy: { createdAt: 'desc' },
   })
 
+  // Helper to check if a submission's result is published
+  const isSubmissionPublished = (s) => {
+    if (s.isPublished) return true
+    if (s.test?.resultsPublishAt && new Date(s.test.resultsPublishAt) <= new Date()) return true
+    return false
+  }
+
   // Published results
-  const publishedSubmissions = submissions.filter((s) => s.isPublished)
+  const publishedSubmissions = submissions.filter(isSubmissionPublished)
   const submittedTestIds = new Set(submissions.map((s) => s.testId))
 
   return (
@@ -145,24 +152,34 @@ export default async function StudentDashboardPage() {
             </div>
           ) : (
             <div style={{ display: 'grid', gap: '0.75rem' }}>
-              {submissions.map((sub) => (
-                <div key={sub.id} className="card card-sm animate-in">
-                  <div className="flex-between">
-                    <div>
-                      <h4 style={{ margin: 0 }}>{sub.test?.title || 'Assessment'}</h4>
-                      <div className="flex-gap text-xs text-muted" style={{ marginTop: '0.35rem' }}>
-                        <span>🔑 {sub.test?.testCode}</span>
-                        <span>📅 Submitted: {new Date(sub.submittedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+              {submissions.map((sub) => {
+                const isPub = isSubmissionPublished(sub)
+                const isScheduledFuture = !isPub && sub.test?.resultsPublishAt && new Date(sub.test.resultsPublishAt) > new Date()
+                return (
+                  <div key={sub.id} className="card card-sm animate-in">
+                    <div className="flex-between">
+                      <div>
+                        <h4 style={{ margin: 0 }}>{sub.test?.title || 'Assessment'}</h4>
+                        <div className="flex-gap text-xs text-muted" style={{ marginTop: '0.35rem' }}>
+                          <span>🔑 {sub.test?.testCode}</span>
+                          <span>📅 Submitted: {new Date(sub.submittedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
+                      </div>
+                      <div>
+                        {isPub ? (
+                          <span className="badge badge-active">✓ Results Published</span>
+                        ) : isScheduledFuture ? (
+                          <span className="badge" style={{ background: 'var(--accent-1)', color: '#fff', fontSize: '0.75rem' }}>
+                            ⏰ Scheduled ({new Date(sub.test.resultsPublishAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })})
+                          </span>
+                        ) : (
+                          <span className="badge badge-inactive">⏳ Evaluation Pending</span>
+                        )}
                       </div>
                     </div>
-                    <div>
-                      <span className={`badge ${sub.isPublished ? 'badge-active' : 'badge-inactive'}`}>
-                        {sub.isPublished ? '✓ Results Published' : '⏳ Evaluation Pending'}
-                      </span>
-                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </section>

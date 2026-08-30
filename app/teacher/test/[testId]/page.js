@@ -30,7 +30,9 @@ export default async function TestOverviewPage({ params }) {
     submissions: (test.submissions || []).length,
   }
 
-  const publishedCount = (test.submissions || []).filter(s => s.isPublished).length
+  const isScheduleActive = test.resultsPublishAt && new Date(test.resultsPublishAt) > new Date()
+  const isSchedulePast = test.resultsPublishAt && new Date(test.resultsPublishAt) <= new Date()
+  const publishedCount = (test.submissions || []).filter(s => s.isPublished || isSchedulePast).length
 
   return (
     <div className="page">
@@ -53,11 +55,16 @@ export default async function TestOverviewPage({ params }) {
 
         <div className="flex-between mb-4 mt-2">
           <div>
-            <div className="flex-gap mb-1">
+            <div className="flex-gap mb-1" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
               <h1 style={{ fontSize: '1.6rem' }}>{test.title}</h1>
               <span className={`badge ${test.isActive ? 'badge-active' : 'badge-inactive'}`}>
                 {test.isActive ? '● Active' : '○ Disabled'}
               </span>
+              {isScheduleActive && (
+                <span className="badge" style={{ background: 'var(--accent-1)', color: '#fff' }}>
+                  ⏰ Results Scheduled: {new Date(test.resultsPublishAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}
+                </span>
+              )}
             </div>
             {test.description && <p className="text-secondary text-sm">{test.description}</p>}
           </div>
@@ -93,7 +100,7 @@ export default async function TestOverviewPage({ params }) {
           </div>
           <div className="stat-card">
             <div className="stat-value">{publishedCount}</div>
-            <div className="stat-label">Results Published</div>
+            <div className="stat-label">{isScheduleActive ? 'Scheduled Auto-Publish' : 'Results Published'}</div>
           </div>
           {test.timeLimit && (
             <div className="stat-card">
@@ -117,10 +124,16 @@ export default async function TestOverviewPage({ params }) {
             <p className="text-sm text-muted mt-1">See all student submissions and auto-calculated scores.</p>
           </Link>
 
-          <Link href={`/teacher/test/${test.id}/publish`} className="card" style={{ cursor: 'pointer', textDecoration: 'none', display: 'block' }}>
+          <Link href={`/teacher/test/${test.id}/publish`} className="card" style={{ cursor: 'pointer', textDecoration: 'none', display: 'block', borderLeft: isScheduleActive ? '4px solid var(--accent-1)' : undefined }}>
             <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>📢</div>
-            <h3>Publish Results</h3>
-            <p className="text-sm text-muted mt-1">Control which students can see their scores.</p>
+            <h3>Publish &amp; Schedule Results</h3>
+            <p className="text-sm text-muted mt-1">
+              {isScheduleActive
+                ? `⏰ Auto-publishing on ${new Date(test.resultsPublishAt).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' })}`
+                : publishedCount > 0
+                ? `● ${publishedCount} results live · Click to configure`
+                : 'Publish now or set a scheduled release time.'}
+            </p>
           </Link>
 
           <Link href={`/teacher/test/${test.id}/edit`} className="card" style={{ cursor: 'pointer', textDecoration: 'none', display: 'block' }}>

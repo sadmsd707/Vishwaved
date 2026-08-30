@@ -30,7 +30,7 @@ export default async function ResultPage({ params, searchParams }) {
 
   const test = await db.test.findUnique({
     where: { testCode: p.testCode },
-    select: { id: true, title: true, showAnswers: true, showPerQuestion: true, testCode: true },
+    select: { id: true, title: true, showAnswers: true, showPerQuestion: true, testCode: true, resultsPublishAt: true },
   })
   if (!test) notFound()
 
@@ -69,14 +69,44 @@ export default async function ResultPage({ params, searchParams }) {
     )
   }
 
-  if (!submission.isPublished) {
+  const isAutoPublished = test.resultsPublishAt && new Date(test.resultsPublishAt) <= new Date()
+  const isPublished = submission.isPublished || isAutoPublished
+
+  if (!isPublished) {
+    const isScheduledFuture = test.resultsPublishAt && new Date(test.resultsPublishAt) > new Date()
     return (
       <div className="page-center">
-        <div className="card text-center" style={{ maxWidth: '420px' }}>
-          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⏳</div>
-          <h2>Results Not Published Yet</h2>
-          <p className="text-muted mt-2">Your teacher hasn&apos;t published results for this test yet. Please check back later.</p>
-          <Link href="/student" className="btn btn-secondary mt-3">Back to Portal</Link>
+        <div className="card text-center" style={{ maxWidth: '440px', padding: '2.5rem 2rem' }}>
+          <div style={{ fontSize: '3rem', marginBottom: '0.75rem' }}>{isScheduledFuture ? '⏰' : '⏳'}</div>
+          <h2 style={{ marginBottom: '0.5rem' }}>
+            {isScheduledFuture ? 'Results Scheduled' : 'Results Not Published Yet'}
+          </h2>
+          {isScheduledFuture ? (
+            <div>
+              <p className="text-secondary text-sm" style={{ lineHeight: 1.6 }}>
+                Results for <strong>{test.title}</strong> are scheduled to be published on:
+              </p>
+              <div style={{
+                margin: '1.25rem 0',
+                padding: '0.85rem 1rem',
+                background: 'rgba(13, 148, 136, 0.08)',
+                border: '1px solid rgba(13, 148, 136, 0.25)',
+                borderRadius: 'var(--radius)',
+                color: 'var(--accent-1)',
+                fontWeight: 700,
+                fontSize: '1.05rem',
+              }}>
+                📅 {new Date(test.resultsPublishAt).toLocaleString('en-IN', {
+                  dateStyle: 'medium',
+                  timeStyle: 'short',
+                })}
+              </div>
+              <p className="text-xs text-muted">Please check back after this time.</p>
+            </div>
+          ) : (
+            <p className="text-muted mt-2">Your teacher has not published results for this test yet. Please check back later.</p>
+          )}
+          <Link href="/student/dashboard" className="btn btn-primary mt-4">Back to Dashboard</Link>
         </div>
       </div>
     )

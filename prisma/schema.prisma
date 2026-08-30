@@ -25,6 +25,7 @@ model Test {
   timeLimit      Int?         // minutes, null = no limit
   startAt        DateTime?
   endAt          DateTime?
+  resultsPublishAt DateTime? // Scheduled time to auto-publish results
   testCode       String       @unique
   isActive       Boolean      @default(true)
   showAnswers    Boolean      @default(false)

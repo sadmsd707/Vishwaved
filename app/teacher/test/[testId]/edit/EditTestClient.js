@@ -62,6 +62,12 @@ export default function EditTestClient({ test }) {
         </div>
 
         <div className="form-group">
+          <label className="form-label">Auto-Publish Results At (Optional)</label>
+          <input name="resultsPublishAt" type="datetime-local" className="form-input" defaultValue={toLocalDatetime(test.resultsPublishAt)} />
+          <div className="form-hint">Choose a time to automatically release test results to students.</div>
+        </div>
+
+        <div className="form-group">
           <label className="form-label">Question Display Mode</label>
           <select name="displayMode" className="form-select" defaultValue={test.displayMode}>
             <option value="ALL">All questions on one page</option>

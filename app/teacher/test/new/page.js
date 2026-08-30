@@ -71,6 +71,12 @@ export default function NewTestPage() {
             </div>
 
             <div className="form-group">
+              <label className="form-label" htmlFor="resultsPublishAt">Auto-Publish Results At (Optional)</label>
+              <input id="resultsPublishAt" name="resultsPublishAt" type="datetime-local" className="form-input" />
+              <div className="form-hint">Leave blank to publish manually, or choose a scheduled date and time.</div>
+            </div>
+
+            <div className="form-group">
               <label className="form-label" htmlFor="displayMode">Question Display Mode</label>
               <select id="displayMode" name="displayMode" className="form-select">
                 <option value="ALL">All questions on one page</option>
