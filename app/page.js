@@ -254,7 +254,7 @@ export default function LandingPage() {
                   allowFullScreen
                 />
                 <a
-                  href="https://www.google.com/maps/place/Vishwved+science+academy/@18.1831149,74.6084778,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc3750b32136233:0xec1c5002d5fce64c!8m2!3d18.1831149!4d74.6084778!16s%2Fg%2F11nqxp1x1c"
+                  href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-map-link-btn"
@@ -287,7 +287,7 @@ export default function LandingPage() {
               <ul className="footer-links">
                 <li>
                   <a
-                    href="https://www.google.com/maps/place/Vishwved+science+academy/@18.1831149,74.6084778,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc3750b32136233:0xec1c5002d5fce64c!8m2!3d18.1831149!4d74.6084778!16s%2Fg%2F11nqxp1x1c"
+                    href="https://maps.app.goo.gl/QiHsDKMxjG1PszoU7"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'inherit' }}
