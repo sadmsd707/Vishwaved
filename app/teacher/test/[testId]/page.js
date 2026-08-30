@@ -18,14 +18,19 @@ export default async function TestOverviewPage({ params }) {
   const test = await db.test.findFirst({
     where: { id: p.testId, teacherId: session.teacher.id },
     include: {
-      _count: { select: { questions: true, submissions: true } },
+      questions: true,
+      submissions: true,
     },
   })
   if (!test) notFound()
 
-  const publishedCount = await db.submission.count({
-    where: { testId: test.id, isPublished: true },
-  })
+  // Compute _count manually (custom db layer doesn't support Prisma's _count)
+  test._count = {
+    questions: (test.questions || []).length,
+    submissions: (test.submissions || []).length,
+  }
+
+  const publishedCount = (test.submissions || []).filter(s => s.isPublished).length
 
   return (
     <div className="page">
