@@ -323,4 +323,6 @@ flowchart TD
 ---
 
 ## 📄 License
-This project is open source and available under the [MIT License](LICENSE).
+Copyright © 2026 **VishwaVed Academy**. All Rights Reserved.
+
+This software and related documentation are proprietary and confidential. Unauthorized copying, distribution, modification, or sublicensing is strictly prohibited. See [LICENSE](LICENSE) for full details.
