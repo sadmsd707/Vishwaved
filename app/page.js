@@ -67,10 +67,15 @@ export default function LandingPage() {
         <div className="container">
           <div className="about-grid">
             <div className="about-visual">
-              <div className="about-emoji">🏫</div>
-              <p style={{ marginTop: '1.5rem', fontSize: '1.1rem', color: 'var(--accent-3)', fontWeight: 600, position: 'relative', zIndex: 1 }}>
+              <img
+                src="/vishwved building.jpeg"
+                alt="VishwaVed Academy Building"
+                className="about-building-img"
+              />
+              <div className="about-building-caption">
+                <span className="about-building-caption-icon">🏫</span>
                 Building Tomorrow&apos;s Leaders, Today
-              </p>
+              </div>
             </div>
             <div className="about-text">
               <div className="section-tag">About Us</div>
