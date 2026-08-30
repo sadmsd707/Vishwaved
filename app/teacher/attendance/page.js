@@ -55,7 +55,10 @@ export default async function AttendancePage({ searchParams }) {
               Mark and track student attendance class-wise for any date.
             </p>
           </div>
-          <div className="flex-gap">
+          <div className="flex-gap" style={{ flexWrap: 'wrap' }}>
+            <Link href="/teacher/enquiries" className="btn btn-secondary btn-sm">
+              📬 Enquiries
+            </Link>
             <Link href="/teacher/students" className="btn btn-secondary btn-sm">
               👨‍🎓 Manage Students
             </Link>

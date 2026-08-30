@@ -55,6 +55,9 @@ export default function TeacherNav({ teacherName, logoutAction }) {
               <Link href="/teacher/attendance" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
                 <span>📅</span> Attendance
               </Link>
+              <Link href="/teacher/enquiries" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
+                <span>📬</span> Enquiries
+              </Link>
               <Link href="/teacher/test/new" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
                 <span>📝</span> Create Test
               </Link>

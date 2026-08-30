@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { submitInquiry } from '@/actions/enquiry'
 
 const COURSES = [
   'JEE (Mains)',
@@ -111,7 +112,7 @@ export default function InquirySection() {
     if (status.msg) setStatus({ type: '', msg: '' })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (!formData.name.trim()) {
@@ -135,9 +136,20 @@ export default function InquirySection() {
 
     setIsSubmitting(true)
 
-    // Simulate submission / store
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      const res = await submitInquiry({
+        name: formData.name,
+        phone: formData.phone,
+        course: formData.course,
+        message: formData.message,
+      })
+
+      if (res && res.error) {
+        setStatus({ type: 'error', msg: res.error })
+        setIsSubmitting(false)
+        return
+      }
+
       setSubmittedData({ ...formData })
       setStatus({
         type: 'success',
@@ -151,7 +163,11 @@ export default function InquirySection() {
         captchaInput: '',
       })
       generateCaptcha()
-    }, 600)
+    } catch (err) {
+      setStatus({ type: 'error', msg: 'Failed to submit. Please try again or reach out via WhatsApp.' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleWhatsAppRedirect = (dataToUse) => {

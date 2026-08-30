@@ -77,3 +77,14 @@ model Answer {
   marksAwarded  Float      @default(0)
   isCorrect     Boolean    @default(false)
 }
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  course    String
+  message   String?
+  status    String   @default("PENDING") // PENDING | CONTACTED | ENROLLED | CLOSED
+  notes     String?
+  createdAt DateTime @default(now())
+}
