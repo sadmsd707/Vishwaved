@@ -1,34 +1,50 @@
 # 🎓 VishwaVed Academy — Educational Website & Online Assessment Platform
 
-A modern, full-stack educational academy web application and secure online testing platform built with **Next.js 16 (App Router)**, **PostgreSQL (Supabase)**, **Server Actions**, and **Jose (JWT Sessions)**.
+A modern, full-stack educational academy web application, admission inquiry portal, student management system, and secure online testing platform built with **Next.js 16 (App Router)**, **PostgreSQL (Supabase)**, **Server Actions**, and **Jose (JWT Sessions)**.
 
-Designed for educational institutions to showcase academy offerings (courses, faculty, achievements) while providing a high-concurrency online examination engine for **100+ students simultaneously** with zero client-side data exposure and instantaneous server-side auto-grading.
+Designed for educational institutions to showcase academy offerings (courses, faculty, achievements), capture student admission inquiries with interactive captcha verification, manage students and attendance, and run a high-concurrency online examination engine for **100+ students simultaneously** with zero client-side data exposure and instantaneous server-side auto-grading.
 
 ---
 
 ## 🌟 Key Highlights & Features
 
 ### 🏫 Academy Website & Landing Experience
-- **Modern & Vibrant Light Design System**: Clean white & slate canvas with royal teal and sunset orange accents, soft multi-layer shadows, and typography powered by Google's *Outfit* and *Plus Jakarta Sans*.
+- **Modern & Vibrant Design System**: Clean white & slate canvas with royal teal and sunset orange accents, soft multi-layer shadows, and typography powered by Google's *Outfit* and *Plus Jakarta Sans*.
 - **Interactive Navigation & Slide-Over Drawer**:
   - Sticky frosted navigation bar with academy branding.
-  - Three-lines hamburger menu (☰) in the upper corner opening a sleek slide-out drawer with quick links and direct portal cards.
+  - Quick links for About, Inquiries, Courses, Faculty, and Contact.
+  - Three-lines hamburger menu (☰) opening a sleek slide-out drawer with direct portal cards.
+- **Inquiry Now & Free Online Registration Banner**:
+  - **Dynamic Interactive Captcha**: Generates realistic distorted alphanumeric captchas on an HTML5 `<canvas>` with background noise, strike lines, and click-to-refresh.
+  - **Comprehensive Form Fields**: Student Name, 10-digit Phone Number, Course Dropdown (JEE Mains, JEE Advance, NEET, MHT-CET, Foundation, 11th/12th Science), and Message.
+  - **1-Click WhatsApp Connect**: Instant direct chat link pre-filling student name and chosen course.
+  - **Key Academy Metrics**: 754+ Happy Students, 5+ Approved Courses, 12+ Certified Teachers.
 - **Rich Multi-Section Content**:
-  - **Hero Section**: Animated gradient orbs, inspiring tagline, and direct "Explore Courses" call-to-action.
+  - **Hero Section**: Animated gradient orbs, inspiring tagline, and direct "Inquiry Now" & "Explore Courses" CTAs.
   - **Stats Ribbon**: Key achievements (500+ Students, 50+ Courses, 30+ Faculty, 15+ Years).
-  - **About Us**: Academy mission, values, and core differentiators.
-  - **Courses Grid**: Curated curriculum across Science, Mathematics, Engineering (JEE/CET), Commerce, Competitive Exams (NEET), and Computer Science.
-  - **Why VishwaVed**: Highlights covering expert faculty, modern labs, smart online testing, and proven results.
+  - **About Us**: Academy mission, values, and campus building visual.
+  - **Courses Grid**: Curated curriculum across JEE Mains, JEE Advance, NEET Medical, MHT-CET, and Foundation (Class 8–10).
+  - **Facilities & Highlights**: Dedicated batches, experienced faculty, doubt-solving sessions, regular test series.
   - **Faculty Showcase**: Teacher profiles with qualifications and subject expertise.
   - **Student Testimonials**: Verified student success stories and star ratings.
-  - **Contact & Enrollment**: Academy address in Baramati, contact phone, email, and direct registration links.
+  - **Contact & Enrollment**: Academy address in Baramati, contact phones, email, and direct WhatsApp links.
 
 ---
 
 ### 👨‍🏫 Faculty / Teacher Portal
 - **Faculty Authentication**: Secure registration and login backed by Supabase PostgreSQL with `bcryptjs` password hashing (salt rounds: 12) and encrypted `httpOnly`, `sameSite: lax` session cookies via `jose`.
-- **Test Management & Configuration**:
-  - Create and configure tests with custom title, instructions, time limit (with automatic countdown), availability window, and attempt limits.
+- **📬 Admission Enquiries Management (`/teacher/enquiries`)**:
+  - **Real-Time Counters**: Total Inquiries, Pending Follow-up, Contacted, and Enrolled.
+  - **Live Search & Filters**: Search by student name, phone number, message, or teacher notes; filter by status (*All, Pending, Contacted, Enrolled, Closed*) and course (*JEE, NEET, CET, Foundation*).
+  - **1-Click WhatsApp & Call**: Directly launch WhatsApp chat with customized greeting or call the parent/student with a single click.
+  - **Status & Internal Notes**: Update enquiry status on the fly and save private teacher follow-up notes.
+- **👨‍🎓 Student Management (`/teacher/students`)**:
+  - Add and manage enrolled students class-wise with DOB, student phone, and parent phone numbers.
+  - Student ID acts as their official authentication credential.
+- **📅 Daily Attendance Tracker (`/teacher/attendance`)**:
+  - Mark and track daily student attendance (Present, Absent, Late) date-wise and class-wise.
+- **📝 Test Management & Online Assessment Engine**:
+  - Create and configure tests with custom title, instructions, time limits (with automatic countdown), and attempt limits.
   - Automatically generates human-friendly unique test access codes (e.g., `TEST-7K3M9P`).
   - Toggle test active/inactive status in real time.
 - **Rich Question Builder**:
@@ -46,7 +62,7 @@ Designed for educational institutions to showcase academy offerings (courses, fa
 ---
 
 ### 📝 Student Portal
-- **Zero Friction Entry**: Students join tests instantly with just the **Test ID**, their **Full Name**, and **Roll Number / Student ID**. No prior registration required.
+- **Zero Friction Entry**: Students join tests instantly with just the **Test ID**, their **Full Name**, and **Roll Number / Student ID**.
 - **Interactive Test Interface**:
   - Real-time countdown timer with visual progress indicator and color-coded urgency states.
   - Responsive layout optimized for smartphones, tablets, and desktop computers.
@@ -74,7 +90,7 @@ Designed for educational institutions to showcase academy offerings (courses, fa
 |---|---|
 | **Framework** | [Next.js 16](https://nextjs.org/) (App Router + Server Components + Turbopack) |
 | **Language** | JavaScript (ESM) / React 19 |
-| **Styling** | Vanilla CSS Design System (Clean Light Theme, Mobile-First, Responsive) |
+| **Styling** | Vanilla CSS Design System (Clean Light Theme, Glassmorphism, Responsive) |
 | **Database** | PostgreSQL ([Supabase](https://supabase.com/)) |
 | **Database Client** | Pure JS `postgres.js` client + Prisma schema definition |
 | **Auth & Security** | `jose` (HS256/AES JWT in httpOnly cookie), `bcryptjs` |
@@ -87,21 +103,29 @@ Designed for educational institutions to showcase academy offerings (courses, fa
 ├── actions/                  # Next.js Server Actions (No public API routes)
 │   ├── auth.js               # Faculty sign-up, login, password hashing
 │   ├── auth-redirect.js      # Logout action with navigation redirect
+│   ├── enquiry.js            # Submit, update status, note, delete inquiries
+│   ├── students.js           # Add, edit, delete enrolled student records
+│   ├── attendance.js         # Save & query class-wise daily attendance
 │   ├── test.js               # Test CRUD, code generation, toggle status
 │   ├── questions.js          # Add, update, and delete questions
 │   ├── submission.js         # Start test validation & auto-graded submission
 │   └── publish.js            # Result publishing & visibility settings
 ├── app/                      # App Router Pages & Components
 │   ├── components/           # Reusable UI Components
-│   │   └── Navbar.js         # Client navbar with animated 3-lines drawer
-│   ├── globals.css           # Global design system, light theme & animations
+│   │   ├── Navbar.js         # Client navbar with animated 3-lines drawer
+│   │   ├── InquirySection.js # Inquiry form with canvas captcha & WhatsApp CTA
+│   │   ├── TeacherNav.js     # Teacher dashboard navigation bar & dropdown
+│   │   └── StudentNav.js     # Student portal navigation bar
+│   ├── globals.css           # Global design system, glassmorphism & responsive CSS
 │   ├── layout.js             # Root layout with Google Fonts & viewport metadata
 │   ├── page.js               # VishwaVed Academy landing page
 │   ├── not-found.js          # Custom 404 page
 │   ├── teacher/              # Faculty portal routes
-│   │   ├── signup/           # Faculty registration
 │   │   ├── login/            # Faculty login
 │   │   ├── dashboard/        # Faculty dashboard & test overview
+│   │   ├── enquiries/        # Admission inquiries tracking & management
+│   │   ├── students/         # Student roster & class-wise management
+│   │   ├── attendance/       # Daily attendance sheet
 │   │   └── test/
 │   │       ├── new/          # Create new test form
 │   │       └── [testId]/
@@ -122,6 +146,7 @@ Designed for educational institutions to showcase academy offerings (courses, fa
 │   └── session.js            # jose JWT cookie session manager
 ├── prisma/
 │   └── schema.prisma         # Declarative database schema
+├── public/                   # Static assets & background images
 ├── .env.example              # Environment variable template
 ├── next.config.mjs           # Next.js configuration
 └── README.md
@@ -165,6 +190,42 @@ CREATE TABLE IF NOT EXISTS teacher (
   password_hash TEXT NOT NULL,
   name TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS "Enquiry" (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  course TEXT NOT NULL,
+  message TEXT,
+  status TEXT NOT NULL DEFAULT 'PENDING',
+  notes TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS "Student" (
+  id TEXT PRIMARY KEY,
+  first_name TEXT NOT NULL,
+  middle_name TEXT NOT NULL,
+  surname TEXT NOT NULL,
+  dob DATE NOT NULL,
+  class TEXT NOT NULL,
+  mobile TEXT NOT NULL,
+  parent_mobile TEXT NOT NULL,
+  mothers_name TEXT NOT NULL,
+  teacher_id TEXT REFERENCES teacher(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS "Attendance" (
+  id TEXT PRIMARY KEY,
+  student_id TEXT NOT NULL REFERENCES "Student"(id) ON DELETE CASCADE,
+  teacher_id TEXT NOT NULL REFERENCES teacher(id),
+  date DATE NOT NULL,
+  status TEXT NOT NULL,
+  remarks TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(student_id, date)
 );
 
 CREATE TABLE IF NOT EXISTS test (
@@ -238,29 +299,26 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 📖 Step-by-Step User Workflow
+## 📖 Complete Platform Workflow
 
 ```mermaid
 flowchart TD
-    A[Faculty Registers or Logs in] --> B[Faculty Creates Test in Dashboard]
-    B --> C[Add MCQs & Numerical Questions]
-    C --> D[Share Generated Test Code: e.g. TEST-7F3A9C]
-    D --> E[Students Access via Student Portal /student]
-    E --> F[Students Complete Test with Live Timer]
-    F --> G[Server Auto-Grades Submissions Instantly]
-    G --> H[Faculty Reviews Submissions Dashboard]
-    H --> I[Faculty Publishes Results]
-    I --> J[Students View Published Scorecard & Breakdown]
+    A[Visitor views Website & Fills Inquiry with Captcha] --> B[Inquiry saved to Database & WhatsApp Option]
+    B --> C[Teacher Portal: Review Inquiries in /teacher/enquiries]
+    C --> D[Teacher Contacts via 1-Click WhatsApp or Call]
+    D --> E[Enrolled Students added in /teacher/students]
+    E --> F[Daily Attendance tracked in /teacher/attendance]
+    G[Teacher creates Online Test with MCQs/Numerical] --> H[Share Test Code with Students]
+    H --> I[Students take Online Assessment in /student]
+    I --> J[Server Auto-Grades Submissions & Publishes Results]
 ```
 
-1. **Faculty Registration**: Visit `/teacher/signup`, create an account, and access the Faculty Dashboard.
-2. **Create a Test**: Click `+ Create Test`, specify the test title, duration, and rules.
-3. **Add Questions**: Add Multiple Choice Questions (with 4 options) and Numerical Questions (with tolerance).
-4. **Distribute Test ID**: Share the 6-character code with students.
-5. **Student Access**: Students go to `/student`, enter the Test ID with their name and roll number.
-6. **Take Test & Submit**: Students complete the assessment; upon submission or timer expiration, responses are auto-graded on the server.
-7. **Publishing**: Faculty reviews submissions and publishes scores via `/teacher/test/[id]/publish`.
-8. **View Scores**: Students check their results at `/student` under the "View Result" tab.
+1. **Visitor Inquiry**: Prospective students complete the registration form with captcha validation.
+2. **Teacher Inquiry Management**: Faculty views inquiries at `/teacher/enquiries`, updates status, and contacts leads via 1-click WhatsApp or call.
+3. **Student Enrolment**: Enrolled students are added to `/teacher/students`.
+4. **Attendance Marking**: Faculty tracks class-wise daily attendance at `/teacher/attendance`.
+5. **Online Assessments**: Faculty creates tests, adds questions, and distributes test codes.
+6. **Instant Auto-Grading & Publishing**: Students complete tests with live timers, answers are evaluated securely on the server, and results are published with detailed scorecards.
 
 ---
 
