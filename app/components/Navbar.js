@@ -43,11 +43,11 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className="nav-links">
-            <a href="#about">About</a>
-            <a href="#inquiry">Inquiry</a>
-            <a href="#courses">Courses</a>
-            <a href="#faculty">Faculty</a>
-            <a href="#contact">Contact</a>
+            <Link href="/#about">About</Link>
+            <Link href="/#inquiry">Inquiry</Link>
+            <Link href="/courses">Courses</Link>
+            <Link href="/#faculty">Faculty</Link>
+            <Link href="/#contact">Contact</Link>
           </div>
 
           {/* Desktop Actions */}
@@ -104,39 +104,39 @@ export default function Navbar() {
           <div className="drawer-section-title">Navigation</div>
           <ul className="drawer-links">
             <li>
-              <a href="#about" onClick={() => setIsOpen(false)}>
+              <Link href="/#about" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">🏫</span> About Academy
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#inquiry" onClick={() => setIsOpen(false)}>
+              <Link href="/#inquiry" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">✍️</span> Inquire Now
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#courses" onClick={() => setIsOpen(false)}>
+              <Link href="/courses" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">📚</span> Courses &amp; Curriculum
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#features" onClick={() => setIsOpen(false)}>
+              <Link href="/#features" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">✨</span> Why VishwaVed
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#faculty" onClick={() => setIsOpen(false)}>
+              <Link href="/#faculty" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">👨‍🏫</span> Faculty Members
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#testimonials" onClick={() => setIsOpen(false)}>
+              <Link href="/#testimonials" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">💬</span> Student Reviews
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" onClick={() => setIsOpen(false)}>
+              <Link href="/#contact" onClick={() => setIsOpen(false)}>
                 <span className="drawer-icon">📍</span> Contact &amp; Location
-              </a>
+              </Link>
             </li>
           </ul>
 

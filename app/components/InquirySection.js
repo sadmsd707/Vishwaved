@@ -11,14 +11,20 @@ const COURSES = [
   '11th & 12th Science (Board + Competitive)',
 ]
 
-export default function InquirySection() {
+export default function InquirySection({ initialCourse = '' } = {}) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    course: '',
+    course: initialCourse || '',
     message: '',
     captchaInput: '',
   })
+
+  useEffect(() => {
+    if (initialCourse) {
+      setFormData((prev) => ({ ...prev, course: initialCourse }))
+    }
+  }, [initialCourse])
 
   const [captchaCode, setCaptchaCode] = useState('')
   const [status, setStatus] = useState({ type: '', msg: '' })

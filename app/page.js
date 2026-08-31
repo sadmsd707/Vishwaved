@@ -116,20 +116,25 @@ export default function LandingPage() {
 
           <div className="courses-grid">
             {[
-              { icon: '⚙️', title: 'JEE (Mains)', desc: 'Comprehensive coaching for JEE Main with in-depth concept coverage, problem-solving techniques, and rigorous test series.', tag: 'Engineering' },
-              { icon: '🚀', title: 'JEE (Advance)', desc: 'Advanced problem-solving, multi-concept questions, and intensive preparation to secure top ranks in IIT JEE Advanced.', tag: 'IIT Prep' },
-              { icon: '🩺', title: 'NEET', desc: 'Focused medical entrance coaching covering Physics, Chemistry, and Biology with NCERT mastery and speed tests.', tag: 'Medical' },
-              { icon: '⚡', title: 'MHTCET', desc: 'Targeted preparation for Maharashtra State Common Entrance Test with shortcut tricks, speed-accuracy training, and mock tests.', tag: 'State CET' },
-              { icon: '🌱', title: 'FOUNDATION', desc: 'Strong fundamentals in Science & Mathematics for early grades to build analytical thinking and Olympiad readiness.', tag: 'Class 8–10' },
+              { icon: '⚙️', title: 'JEE (Mains)', desc: 'Comprehensive coaching for JEE Main with in-depth concept coverage, problem-solving techniques, and rigorous test series.', tag: 'Engineering', slug: 'jee-mains' },
+              { icon: '🚀', title: 'JEE (Advance)', desc: 'Advanced problem-solving, multi-concept questions, and intensive preparation to secure top ranks in IIT JEE Advanced.', tag: 'IIT Prep', slug: 'jee-advanced' },
+              { icon: '🩺', title: 'NEET', desc: 'Focused medical entrance coaching covering Physics, Chemistry, and Biology with NCERT mastery and speed tests.', tag: 'Medical', slug: 'neet' },
+              { icon: '⚡', title: 'MHTCET', desc: 'Targeted preparation for Maharashtra State Common Entrance Test with shortcut tricks, speed-accuracy training, and mock tests.', tag: 'State CET', slug: 'mht-cet' },
+              { icon: '🌱', title: 'FOUNDATION', desc: 'Strong fundamentals in Science & Mathematics for early grades to build analytical thinking and Olympiad readiness.', tag: 'Class 8–10', slug: 'foundation' },
             ].map((c) => (
-              <div key={c.title} className="course-card">
+              <Link key={c.title} href={`/courses/${c.slug}`} className="course-card">
                 <div>
                   <div className="course-icon">{c.icon}</div>
                   <h3>{c.title}</h3>
                   <p>{c.desc}</p>
                 </div>
-                <div className="course-tag">{c.tag}</div>
-              </div>
+                <div className="course-card-footer">
+                  <div className="course-tag">{c.tag}</div>
+                  <span className="course-card-arrow-link">
+                    Exam Info <span>→</span>
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
