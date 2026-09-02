@@ -165,9 +165,17 @@ export default async function StudentDashboardPage() {
                           <span>📅 Submitted: {new Date(sub.submittedAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
                       </div>
-                      <div>
+                      <div className="flex-gap">
                         {isPub ? (
-                          <span className="badge badge-active">✓ Results Published</span>
+                          <>
+                            <span className="badge badge-active">✓ Results Published</span>
+                            <Link
+                              href={`/student/result/${sub.test?.testCode}?studentId=${encodeURIComponent(student.id)}&roll=${encodeURIComponent(student.id)}&name=${encodeURIComponent(student.name)}`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              View Result →
+                            </Link>
+                          </>
                         ) : isScheduledFuture ? (
                           <span className="badge" style={{ background: 'var(--accent-1)', color: '#fff', fontSize: '0.75rem' }}>
                             ⏰ Scheduled ({new Date(sub.test.resultsPublishAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })})
@@ -215,7 +223,7 @@ export default async function StudentDashboardPage() {
                       </div>
                       <div>
                         <Link
-                          href={`/student/result/${sub.test?.testCode}?studentId=${student.id}`}
+                          href={`/student/result/${sub.test?.testCode}?studentId=${encodeURIComponent(student.id)}&roll=${encodeURIComponent(student.id)}&name=${encodeURIComponent(student.name)}`}
                           className="btn btn-primary btn-sm"
                         >
                           View Full Breakdown →

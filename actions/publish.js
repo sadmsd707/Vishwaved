@@ -28,6 +28,8 @@ export async function publishAll(testId) {
   revalidatePath(`/teacher/test/${testId}/publish`)
   revalidatePath(`/teacher/test/${testId}/submissions`)
   revalidatePath(`/teacher/test/${testId}`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true }
 }
 
@@ -48,6 +50,8 @@ export async function unpublishAll(testId) {
   revalidatePath(`/teacher/test/${testId}/publish`)
   revalidatePath(`/teacher/test/${testId}/submissions`)
   revalidatePath(`/teacher/test/${testId}`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true }
 }
 
@@ -80,6 +84,8 @@ export async function setPublishSchedule(testId, resultsPublishAt) {
   revalidatePath(`/teacher/test/${testId}/publish`)
   revalidatePath(`/teacher/test/${testId}/submissions`)
   revalidatePath(`/teacher/test/${testId}`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true, resultsPublishAt: publishDate.toISOString() }
 }
 
@@ -95,6 +101,8 @@ export async function clearPublishSchedule(testId) {
   revalidatePath(`/teacher/test/${testId}/publish`)
   revalidatePath(`/teacher/test/${testId}/submissions`)
   revalidatePath(`/teacher/test/${testId}`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true }
 }
 
@@ -108,6 +116,8 @@ export async function publishSelected(testId, submissionIds) {
   })
 
   revalidatePath(`/teacher/test/${testId}/publish`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true }
 }
 
@@ -129,6 +139,8 @@ export async function toggleSubmissionPublish(submissionId) {
 
   revalidatePath(`/teacher/test/${submission.testId}/publish`)
   revalidatePath(`/teacher/test/${submission.testId}/submissions`)
+  revalidatePath('/student/dashboard')
+  revalidatePath('/student/result/[testCode]', 'page')
   return { success: true }
 }
 

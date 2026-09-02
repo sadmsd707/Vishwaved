@@ -12,10 +12,10 @@ export default async function ResultPage({ params, searchParams }) {
   const sp = await searchParams
   const session = await getStudentSession()
 
-  const studentName = sp.name?.toString().trim() || session?.student?.name
   const studentRoll = sp.roll?.toString().trim() || sp.studentId?.toString().trim() || session?.student?.id
+  let studentName = sp.name?.toString().trim() || session?.student?.name
 
-  if (!studentName || !studentRoll) {
+  if (!studentRoll) {
     return (
       <div className="page-center">
         <div className="card text-center" style={{ maxWidth: '420px' }}>
@@ -28,9 +28,9 @@ export default async function ResultPage({ params, searchParams }) {
     )
   }
 
+  const testCode = p.testCode?.toString().trim().toUpperCase()
   const test = await db.test.findUnique({
-    where: { testCode: p.testCode },
-    select: { id: true, title: true, showAnswers: true, showPerQuestion: true, testCode: true, resultsPublishAt: true },
+    where: { testCode },
   })
   if (!test) notFound()
 
@@ -60,15 +60,19 @@ export default async function ResultPage({ params, searchParams }) {
         <div className="card text-center" style={{ maxWidth: '420px' }}>
           <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🔍</div>
           <h2>No Submission Found</h2>
-          <p className="text-muted mt-2">We couldn&apos;t find a submission for <strong>{studentName}</strong> with roll <strong>{studentRoll}</strong> on this test.</p>
-          <Link href="/student" className="btn btn-secondary mt-3">Try Again</Link>
+          <p className="text-muted mt-2">We couldn&apos;t find a submission for roll <strong>{studentRoll}</strong> on this test.</p>
+          <Link href="/student/dashboard" className="btn btn-secondary mt-3">Back to Dashboard</Link>
         </div>
       </div>
     )
   }
 
+  if (!studentName) {
+    studentName = submission.studentName
+  }
+
   const isAutoPublished = test.resultsPublishAt && new Date(test.resultsPublishAt) <= new Date()
-  const isPublished = submission.isPublished || isAutoPublished
+  const isPublished = Boolean(submission.isPublished) || Boolean(isAutoPublished)
 
   if (!isPublished) {
     const isScheduledFuture = test.resultsPublishAt && new Date(test.resultsPublishAt) > new Date()
