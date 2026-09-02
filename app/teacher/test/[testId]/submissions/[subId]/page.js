@@ -19,12 +19,16 @@ export default async function SubmissionDetailPage({ params }) {
       test: true,
       answers: {
         include: { question: true },
-        orderBy: { question: { order: 'asc' } },
       },
     },
   })
 
   if (!submission || submission.test.teacherId !== session.teacher.id) notFound()
+
+  // Sort answers by question order (nested orderBy not supported by ORM)
+  if (submission.answers) {
+    submission.answers.sort((a, b) => (a.question?.order ?? 0) - (b.question?.order ?? 0))
+  }
 
   const pct = submission.maxScore > 0
     ? Math.round((submission.totalScore / submission.maxScore) * 100)

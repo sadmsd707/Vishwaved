@@ -10,12 +10,14 @@ datasource db {
 }
 
 model Teacher {
-  id           String   @id @default(cuid())
-  email        String   @unique
+  id           String       @id @default(cuid())
+  email        String       @unique
   passwordHash String
   name         String
-  createdAt    DateTime @default(now())
+  createdAt    DateTime     @default(now())
   tests        Test[]
+  students     Student[]
+  attendances  Attendance[]
 }
 
 model Test {
@@ -87,4 +89,32 @@ model Enquiry {
   status    String   @default("PENDING") // PENDING | CONTACTED | ENROLLED | CLOSED
   notes     String?
   createdAt DateTime @default(now())
+}
+
+model Student {
+  id           String       @id           // Teacher-assigned student ID
+  firstName    String
+  middleName   String
+  surname      String
+  dob          DateTime
+  class        String
+  mobile       String
+  parentMobile String
+  mothersName  String
+  teacher      Teacher      @relation(fields: [teacherId], references: [id])
+  teacherId    String
+  attendances  Attendance[]
+}
+
+model Attendance {
+  id        String   @id @default(cuid())
+  student   Student  @relation(fields: [studentId], references: [id])
+  studentId String
+  teacher   Teacher  @relation(fields: [teacherId], references: [id])
+  teacherId String
+  date      DateTime
+  status    String   // PRESENT | ABSENT | LATE etc.
+  remarks   String?
+
+  @@unique([studentId, date])
 }

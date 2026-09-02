@@ -42,19 +42,17 @@ export default async function ResultPage({ params, searchParams }) {
     include: {
       answers: {
         include: {
-          question: {
-            select: {
-              id: true, type: true, text: true, options: true, marks: true, order: true,
-              correctAnswer: true,
-              explanation: true,
-            },
-          },
+          question: true,
         },
-        orderBy: { question: { order: 'asc' } },
       },
     },
     orderBy: { submittedAt: 'desc' },
   })
+
+  // Sort answers by question order (nested orderBy not supported by ORM)
+  if (submission?.answers) {
+    submission.answers.sort((a, b) => (a.question?.order ?? 0) - (b.question?.order ?? 0))
+  }
 
   if (!submission) {
     return (
