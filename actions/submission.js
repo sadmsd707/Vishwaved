@@ -73,7 +73,7 @@ export async function submitTest(testCode, formData) {
     return sub
   })
 
-  redirect(`/student/submitted?code=${testCode}`)
+  return { success: true, redirectTo: `/student/submitted?code=${testCode}` }
 }
 
 export async function startTest(formData) {

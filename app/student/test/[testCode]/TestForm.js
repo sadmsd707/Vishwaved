@@ -16,15 +16,23 @@ export default function TestForm({ test, studentName, studentRoll }) {
   const handleSubmit = useCallback(async () => {
     if (submitting) return
     setSubmitting(true)
+    setError(null)
     const fd = new FormData()
     fd.set('studentName', studentName)
     fd.set('studentRoll', studentRoll)
     for (const [qId, ans] of Object.entries(answers)) {
       fd.set(`q_${qId}`, ans)
     }
-    const result = await submitTest(test.testCode, fd)
-    if (result?.errors) {
-      setError(result.errors.general || 'Submission failed. Please try again.')
+    try {
+      const result = await submitTest(test.testCode, fd)
+      if (result?.errors) {
+        setError(result.errors.general || 'Submission failed. Please try again.')
+        setSubmitting(false)
+      } else if (result?.redirectTo) {
+        window.location.href = result.redirectTo
+      }
+    } catch (err) {
+      setError('Something went wrong. Please try again.')
       setSubmitting(false)
     }
   }, [submitting, answers, studentName, studentRoll, test.testCode])
