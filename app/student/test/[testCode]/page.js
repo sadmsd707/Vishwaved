@@ -19,34 +19,20 @@ export default async function TakeTestPage({ params, searchParams }) {
     redirect('/student')
   }
 
-  // Fetch test — NEVER include correctAnswer or explanation in this query
+  // Fetch test with questions via include (the custom ORM only supports include, not nested select)
   const test = await db.test.findUnique({
     where: { testCode: p.testCode },
-    select: {
-      id: true,
-      title: true,
-      description: true,
-      timeLimit: true,
-      startAt: true,
-      endAt: true,
-      isActive: true,
-      maxAttempts: true,
-      displayMode: true,
-      testCode: true,
+    include: {
       questions: {
         orderBy: { order: 'asc' },
-        select: {
-          id: true,
-          type: true,
-          text: true,
-          options: true,
-          marks: true,
-          order: true,
-          // ⛔ correctAnswer, explanation are NOT selected — never sent to browser
-        },
       },
     },
   })
+
+  // ⛔ Strip correctAnswer & explanation — NEVER send to browser
+  if (test?.questions) {
+    test.questions = test.questions.map(({ correctAnswer, explanation, tolerance, ...safe }) => safe)
+  }
 
   if (!test || !test.isActive) notFound()
 
