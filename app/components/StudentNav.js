@@ -57,8 +57,14 @@ export default function StudentNav({ studentName, studentId, studentClass, logou
               <Link href="/student/dashboard#previous-tests" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
                 <span>📋</span> Previous Tests
               </Link>
+              <Link href="/student/attendance" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
+                <span>📅</span> Attendance
+              </Link>
               <Link href="/student/dashboard#results" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
                 <span>📊</span> Results
+              </Link>
+              <Link href="/student/tests" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
+                <span>📝</span> Tests
               </Link>
               <div className="t-dropdown-divider" />
               <form action={logoutAction}>

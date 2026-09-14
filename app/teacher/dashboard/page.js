@@ -47,6 +47,8 @@ export default async function DashboardPage() {
             <Link href="/teacher/enquiries" className="btn btn-secondary">📬 Enquiries</Link>
             <Link href="/teacher/students" className="btn btn-secondary">👨‍🎓 Students</Link>
             <Link href="/teacher/attendance" className="btn btn-secondary">📅 Attendance</Link>
+            <Link href="/teacher/fees" className="btn btn-secondary">💰 Fees</Link>
+            <Link href="/teacher/resources" className="btn btn-secondary">📚 Resources</Link>
             <Link href="/teacher/test/new" className="btn btn-primary">+ Create Test</Link>
           </div>
         </div>
