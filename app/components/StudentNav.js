@@ -66,6 +66,9 @@ export default function StudentNav({ studentName, studentId, studentClass, logou
               <Link href="/student/tests" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
                 <span>📝</span> Tests
               </Link>
+              <Link href="/student/resources" className="t-dropdown-item" onClick={() => setIsOpen(false)}>
+                <span>📚</span> Resources
+              </Link>
               <div className="t-dropdown-divider" />
               <form action={logoutAction}>
                 <button type="submit" className="t-dropdown-item t-dropdown-logout">
