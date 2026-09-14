@@ -39,8 +39,8 @@ export default async function DashboardPage() {
       <div className="container" style={{ paddingTop: '2rem' }}>
         <div className="mb-4">
           <div>
-            <h1>My Tests</h1>
-            <p className="text-secondary text-sm mt-1">Create, manage and publish your tests from here.</p>
+            <h1>📊 Dashboard</h1>
+            <p className="text-secondary text-sm mt-1">Welcome back, {teacher.name}! Here's an overview of your tests.</p>
           </div>
         </div>
 
