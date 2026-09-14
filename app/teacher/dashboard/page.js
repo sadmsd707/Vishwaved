@@ -37,17 +37,10 @@ export default async function DashboardPage() {
       <TeacherNav teacherName={teacher.name} logoutAction={logoutTeacher} />
 
       <div className="container" style={{ paddingTop: '2rem' }}>
-        {/* Header */}
-        <div className="flex-between mb-4">
+        <div className="mb-4">
           <div>
             <h1>My Tests</h1>
             <p className="text-secondary text-sm mt-1">Create, manage and publish your tests from here.</p>
-          </div>
-          <div className="flex-gap" style={{ flexWrap: 'wrap' }}>
-            <Link href="/teacher/enquiries" className="btn btn-secondary">📬 Enquiries</Link>
-            <Link href="/teacher/students" className="btn btn-secondary">👨‍🎓 Students</Link>
-            <Link href="/teacher/attendance" className="btn btn-secondary">📅 Attendance</Link>
-            <Link href="/teacher/test/new" className="btn btn-primary">+ Create Test</Link>
           </div>
         </div>
 
